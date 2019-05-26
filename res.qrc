@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/imagens">
+        <file>imagens/player.png</file>
+        <file>imagens/tiro.png</file>
+        <file>imagens/parede.png</file>
+        <file>imagens/chao.png</file>
+        <file>imagens/player_down.png</file>
+        <file>imagens/player_left.png</file>
+        <file>imagens/player_right.png</file>
+        <file>imagens/player_up.png</file>
+    </qresource>
+</RCC>
