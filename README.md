@@ -14,7 +14,7 @@ _______________________________________________________________________
    TO DO LIST:
    
    fazer uma scena nova para o menu que contenha as opções: "novo jogo " e "continuar" 
-   essa scena será exibida antes de criar o "game" ( eu acho )( acho melhor nao usar aquelas porras de widgets) 
+   essa scena será exibida antes de criar o "game" ( eu acho )( acho melhor nao usar aquelas porras de widgets)(widget vcs dizem forms? K.)
     
    fazer uma logica de pisos quenem o ultimo jogo 
     
