@@ -28,5 +28,7 @@ _______________________________________________________________________
    
    pngs mais bonitos, um tema para o game tbm seria nice, sem ser mt zoado, talvez pedir conselho pro alex dnv
    
+   alguma logica para nao deixar o jogador spammar tiros 
    
+   tentar deixar o movimento mais suave 
    
