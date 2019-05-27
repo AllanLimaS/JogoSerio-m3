@@ -3,7 +3,6 @@
 
 #include <QGraphicsRectItem>
 
-
 class Chao: public QGraphicsRectItem
 {
 public:

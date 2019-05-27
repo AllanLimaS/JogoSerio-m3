@@ -49,6 +49,10 @@ Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 
 }
 
+QPointF Jogador::getPos(){
+    return QPointF(this->x(),this->y());
+}
+
 void Jogador::keyPressEvent(QKeyEvent *event){
 
     if (event->key() == Qt::Key_A){
@@ -67,40 +71,40 @@ void Jogador::keyPressEvent(QKeyEvent *event){
         this->Down = true;
     }
     movimento();
-    update();
+    update();   //nao sei ao certo pra que serve isso asuydhaudshaushd
 
-    if (event->key() == Qt::Key_Escape){
+    if (event->key() == Qt::Key_Escape){    //quita do game quando o jogador está focado
         exit(1);
     }
 
-    if (event->key() == Qt::Key_Up){
+    if (event->key() == Qt::Key_Up){        //tiro pra cima
+        Tiro * tiro = new Tiro();               //cria
+        tiro->setPos(this->x()+10,this->y()+10);//posiciona ele em cima do jogador
+        tiro->setRotation(260+rand()%20-rand()%20);     //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
+        tiro->setVelocidade(this->velocidadeTiro);//^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
+        tiro->setAlcance(this->alcanceTiro);
+        scene()->addItem(tiro);
+    }
+    if (event->key() == Qt::Key_Down){      //tiro pra baixo
         Tiro * tiro = new Tiro();
         tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(250 + rand()%30);
+        tiro->setRotation(90+rand()%20-rand()%20);
         tiro->setVelocidade(this->velocidadeTiro);
         tiro->setAlcance(this->alcanceTiro);
         scene()->addItem(tiro);
     }
-    if (event->key() == Qt::Key_Down){
+    if (event->key() == Qt::Key_Right){     //tiro pra direita
         Tiro * tiro = new Tiro();
         tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(70 + rand()%30);
+        tiro->setRotation(0+rand()%20-rand()%20);
         tiro->setVelocidade(this->velocidadeTiro);
         tiro->setAlcance(this->alcanceTiro);
         scene()->addItem(tiro);
     }
-    if (event->key() == Qt::Key_Right){
+    if (event->key() == Qt::Key_Left){      //tiro pra esquerda
         Tiro * tiro = new Tiro();
         tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(-10 +rand()%30);
-        tiro->setVelocidade(this->velocidadeTiro);
-        tiro->setAlcance(this->alcanceTiro);
-        scene()->addItem(tiro);
-    }
-    if (event->key() == Qt::Key_Left){
-        Tiro * tiro = new Tiro();
-        tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(160 + rand()%30);
+        tiro->setRotation(180+rand()%20-rand()%20);
         tiro->setVelocidade(this->velocidadeTiro);
         tiro->setAlcance(this->alcanceTiro);
         scene()->addItem(tiro);

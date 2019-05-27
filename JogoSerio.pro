@@ -27,17 +27,21 @@ CONFIG += c++11
 SOURCES += \
         chao.cpp \
         game.cpp \
+        inimigo.cpp \
         jogador.cpp \
         main.cpp \
         parede.cpp \
-        tiro.cpp
+        tiro.cpp \
+        tiroinimigo.cpp
 
 HEADERS += \
     chao.h \
     game.h \
+    inimigo.h \
     jogador.h \
     parede.h \
-    tiro.h
+    tiro.h \
+    tiroinimigo.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
