@@ -4,7 +4,6 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
 
-
 class Game: public QGraphicsView{
 public:
     Game();

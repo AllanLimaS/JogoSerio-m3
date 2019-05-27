@@ -8,5 +8,7 @@
         <file>imagens/player_left.png</file>
         <file>imagens/player_right.png</file>
         <file>imagens/player_up.png</file>
+        <file>imagens/inimigo.png</file>
+        <file>imagens/tiroInimigo.png</file>
     </qresource>
 </RCC>

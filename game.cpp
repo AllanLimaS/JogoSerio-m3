@@ -3,8 +3,8 @@
 #include "chao.h"
 #include "tiro.h"
 #include "jogador.h"
+#include "inimigo.h"
 #include <QGraphicsScene>
-
 
 Game::Game():QGraphicsView(){
 
@@ -30,11 +30,12 @@ Game::Game():QGraphicsView(){
     jogador->setFlag(QGraphicsItem::ItemIsFocusable);
     jogador->setFocus();
 
+    Inimigo * inimigo = new Inimigo();
+    scene->addItem(inimigo);
+
     setFixedSize(800,600);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-
 
 }
 

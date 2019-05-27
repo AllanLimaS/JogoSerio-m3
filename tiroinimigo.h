@@ -1,17 +1,17 @@
-#ifndef TIRO_H
-#define TIRO_H
+#ifndef TIROINIMIGO_H
+#define TIROINIMIGO_H
 
-#include "jogador.h"
+#include "inimigo.h"
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsItem>
 
-class Tiro: public QObject, public QGraphicsPixmapItem{
+class TiroInimigo: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 private:
     int velocidade,alcance;
 public:
-    Tiro(QGraphicsItem * parent=0);
+    TiroInimigo(QGraphicsItem * parent=0);
     void setVelocidade(int value);
     void setAlcance(int value);
     int getAlcance() const;
@@ -23,4 +23,4 @@ public slots:
     void deleta();
 };
 
-#endif // TIRO_H
+#endif // TIROINIMIGO_H
