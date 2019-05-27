@@ -4,7 +4,9 @@
 #include "tiro.h"
 #include "jogador.h"
 #include "inimigo.h"
+#include "escada.h"
 #include <QGraphicsScene>
+#include <QList>
 
 Game::Game():QGraphicsView(){
 
@@ -15,18 +17,19 @@ Game::Game():QGraphicsView(){
 
     for(int i = 0; i<13; i++){
         for(int j = 0; j<13; j++){
-            Chao * chao = new Chao(i,j);
-            scene->addItem(chao);
             if(i==0||j==0||i==12||j==12){
                 Parede * parede = new Parede(i, j);
                 scene -> addItem(parede);
+            } else {
+                Chao * chao = new Chao(i,j);
+                scene->addItem(chao);
             }
         }
     }
 
     Jogador * jogador = new Jogador();
     scene->addItem(jogador);
-    jogador->setPos(250,250);
+    jogador->setPos(600,263);
     jogador->setFlag(QGraphicsItem::ItemIsFocusable);
     jogador->setFocus();
 
@@ -36,6 +39,9 @@ Game::Game():QGraphicsView(){
     setFixedSize(800,600);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    Escada * escada = new Escada();
+    scene->addItem(escada);
 
 }
 

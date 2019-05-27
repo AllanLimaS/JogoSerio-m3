@@ -6,15 +6,22 @@
 #include <QGraphicsItem>
 #include <QPointF>
 #include <QObject>
+#include "telapiso.h"
 
 class Jogador:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 private:
+
     bool Up=0,Down=0,Right=0,Left=0;
     int velocidadeTiro,velocidadeMovimento,alcanceTiro;
+    TelaPiso * Piso = new TelaPiso();
+    int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
+    int PisoAtual = 0;  // PISO ATUAL (JUST THAT)
+
 public:
+
     Jogador(QGraphicsItem * parent=0);
-    QPointF getPos();   //função para retornar a posição do jogador
+    QPointF getPos();                           //função para retornar a posição do jogador
 
     void keyPressEvent(QKeyEvent * event);      //evento que ve a tecla pressionada
     void keyReleaseEvent(QKeyEvent * event);    //evento que ve a tecla solta
