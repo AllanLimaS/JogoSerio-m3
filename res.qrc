@@ -10,5 +10,6 @@
         <file>imagens/player_up.png</file>
         <file>imagens/inimigo.png</file>
         <file>imagens/tiroInimigo.png</file>
+        <file>imagens/escada.png</file>
     </qresource>
 </RCC>

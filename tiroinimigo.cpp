@@ -56,30 +56,29 @@ void TiroInimigo::move(){
     for(int  i = 0, n = colliding_items.size(); i < n; i++){
 
         if(typeid(*(colliding_items[i]))== typeid (Parede)){
-         //   delete (this);
+            scene()->removeItem(this);
+            delete this;
+            return;
         }
         if(typeid(*(colliding_items[i]))== typeid (Jogador)){
             scene()->removeItem(colliding_items[i]);
             delete (colliding_items[i]);    //mata o jogador
             delete (this);
+            return;
         }
 
-        //isso aqui em baixo faz a colisão entre as balas do inimigo com as nossa
-        //a ideia era deletar as duas, mas as vezes crash nao sei pq
-
-//        if(typeid(*(colliding_items[i]))== typeid (Tiro)){
-//            scene()->removeItem(colliding_items[i]);
-//            scene()->removeItem(this);
-//            delete (colliding_items[i]);
-//            delete (this);
-//        }
-
+        if(typeid(*(colliding_items[i]))== typeid (Tiro)){
+            scene()->removeItem(colliding_items[i]);
+            scene()->removeItem(this);
+            delete (colliding_items[i]);
+            delete (this);
+            return;
+        }
     }
-
-
 }
 
 void TiroInimigo::deleta()
 {
+    scene()->removeItem(this);
     delete (this);
 }

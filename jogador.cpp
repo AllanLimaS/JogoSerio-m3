@@ -2,6 +2,8 @@
 #include "game.h"
 #include "jogador.h"
 #include "tiro.h"
+#include "escada.h"
+#include "inimigo.h"
 #include <QKeyEvent>
 #include <QPixmap>
 #include <QGraphicsRectItem>
@@ -77,11 +79,11 @@ void Jogador::keyPressEvent(QKeyEvent *event){
         exit(1);
     }
 
-    if (event->key() == Qt::Key_Up){        //tiro pra cima
-        Tiro * tiro = new Tiro();               //cria
-        tiro->setPos(this->x()+10,this->y()+10);//posiciona ele em cima do jogador
-        tiro->setRotation(260+rand()%20-rand()%20);     //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
-        tiro->setVelocidade(this->velocidadeTiro);//^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
+    if (event->key() == Qt::Key_Up){                //tiro pra cima
+        Tiro * tiro = new Tiro();                   //cria
+        tiro->setPos(this->x()+10,this->y()+10);    //posiciona ele em cima do jogador
+        tiro->setRotation(260+rand()%20-rand()%20); //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
+        tiro->setVelocidade(this->velocidadeTiro);  //^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
         tiro->setAlcance(this->alcanceTiro);
         scene()->addItem(tiro);
     }
@@ -133,7 +135,11 @@ void Jogador::keyReleaseEvent(QKeyEvent *event){
     update();
 }
 
+
 void Jogador::movimento(){
+
+    Piso->setPiso(PisoAtual);
+    scene()->addItem(Piso);     // IMPRIME O PISO ATUAL
 
     if (this->Up==true){
         setPos(x(),y()-this->velocidadeMovimento);
@@ -146,8 +152,6 @@ void Jogador::movimento(){
                 setPos(x(),y());
             }
         }
-
-
     }
 
     if(this->Down==true){
@@ -162,6 +166,7 @@ void Jogador::movimento(){
             }
         }
     }
+
     if(this->Right==true){
         setPos(x()+this->velocidadeMovimento,y());
         setPixmap(QPixmap(":/imagens/imagens/player_right.png"));
@@ -174,6 +179,7 @@ void Jogador::movimento(){
             }
         }
     }
+
     if(this->Left==true){
         setPos(x()-this->velocidadeMovimento,y());
         setPixmap(QPixmap(":/imagens/imagens/player_left.png"));
@@ -183,6 +189,28 @@ void Jogador::movimento(){
                 setPos(x()+this->velocidadeMovimento,y());
             }else{
                 setPos(x(),y());
+            }
+        }
+    }
+
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for(int  i = 0, n = colliding_items.size(); i < n; i++){
+        if(typeid(*(colliding_items[i])) == typeid (Escada)){
+
+            QList<QGraphicsItem *> colliding_items = scene()->items();
+            for(int  i = 0, n = colliding_items.size(); i < n; i++){
+                if(typeid(*(colliding_items[i]))== typeid (Inimigo)){
+                    //TEM INIMIGO AINDA N PODE SAIR
+                    TemInimigo = 1;
+                }
+            }
+            if(TemInimigo == 0){ // CASO N TENHA ELE PASSA PELA PORTA
+                setPos(600,263);
+                Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                scene()->addItem(inimigo);
+                PisoAtual = PisoAtual + 1;
+            } else {
+                TemInimigo = 0; //ZERA A VARIAVEL DNV
             }
         }
     }

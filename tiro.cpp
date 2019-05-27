@@ -57,17 +57,23 @@ void Tiro::move(){
     for(int  i = 0, n = colliding_items.size(); i < n; i++){
 
         if(typeid(*(colliding_items[i]))== typeid (Parede)){
-         //   delete (this);
+            scene()->removeItem(this);
+            delete this;
+            return;
+
         }
         if(typeid(*(colliding_items[i]))== typeid (Inimigo)){
             scene()->removeItem(colliding_items[i]);
             delete (colliding_items[i]);    //mata inimigo
-            delete (this);
+            scene()->removeItem(this);
+            delete this;
+            return;
         }
     }
 }
 
 void Tiro::deleta()
 {
-    delete (this);
+    scene()->removeItem(this);
+    delete this;
 }

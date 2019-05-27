@@ -22,7 +22,7 @@ Inimigo::Inimigo(QGraphicsItem *parent): QObject(),QGraphicsPixmapItem(parent){
 
     QTimer * atira_timer = new QTimer(this);
     connect(atira_timer,SIGNAL(timeout()),this,SLOT(atira()));
-    atira_timer->start(500);
+    atira_timer->start(1500);
 
 }
 

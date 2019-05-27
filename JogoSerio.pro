@@ -32,7 +32,9 @@ SOURCES += \
         main.cpp \
         parede.cpp \
         tiro.cpp \
-        tiroinimigo.cpp
+        tiroinimigo.cpp \
+    escada.cpp \
+    telapiso.cpp
 
 HEADERS += \
     chao.h \
@@ -41,7 +43,9 @@ HEADERS += \
     jogador.h \
     parede.h \
     tiro.h \
-    tiroinimigo.h
+    tiroinimigo.h \
+    escada.h \
+    telapiso.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
