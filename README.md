@@ -1,16 +1,15 @@
 # JogoSerio-m3
 
 REGRAS PARA O KODIGO
-____________________________________________________________________
-|1 - VARIAVEIS COM NOMES JUNTOS SEPARADOS POR LETRA MAIUSCULA       |
-|     EX: "vidaJogador", "pauNoCu", "velocidadeTiro"                |
-|                                                                   |
-|2 - TAMANHO DOS PNG, PADRÃO = 20x20, COM EXCEÇÕES, COMO POR EXEMPLO|
-|    O TIRO                                                         |
-|                                                                   |
-|3 - SEMPRE QUE FIZER ALGO DIFERENTE SOZINHO, COMENTE AS ETAPAS PARA|
-|     MELHOR ENTENDIMENTO POR FAVOR                                 |     
----------------------------------------------------------------------
+*1 - VARIAVEIS COM NOMES JUNTOS SEPARADOS POR LETRA MAIUSCULA
+EX: "vidaJogador", "pauNoCu", "velocidadeTiro"
+
+*2 - TAMANHO DOS PNG, PADRÃO = 20x20, COM EXCEÇÕES, COMO POR EXEMPLO
+O TIRO
+
+*3 - SEMPRE QUE FIZER ALGO DIFERENTE SOZINHO, COMENTE AS ETAPAS PARA
+MELHOR ENTENDIMENTO POR FAVOR
+_______________________________________________________________________
 
    TO DO LIST:
    
