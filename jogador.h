@@ -13,14 +13,18 @@ class Jogador:public QObject, public QGraphicsPixmapItem{
 private:
 
     bool Up=0,Down=0,Right=0,Left=0;
+
     int velocidadeTiro,velocidadeMovimento,alcanceTiro;
+    int pontosUpgrade = 0;
+
+
     TelaPiso * Piso = new TelaPiso();
     int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
     int PisoAtual = 0;  // PISO ATUAL (JUST THAT)
 
 public:
 
-    Jogador(QGraphicsItem * parent=0);
+    Jogador(QGraphicsItem * parent = 0);
     QPointF getPos();                           //função para retornar a posição do jogador
 
     void keyPressEvent(QKeyEvent * event);      //evento que ve a tecla pressionada
@@ -32,6 +36,8 @@ public:
     void setVelocidadeMovimento(int value);
     void setAlcanceTiro(int value);
     int getAlcanceTiro() const;
+    void setPontosUpgrade(int value);
+    int getPontosUpgrade() const;
 };
 
 #endif // JOGADOR_H

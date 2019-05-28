@@ -11,5 +11,6 @@
         <file>imagens/inimigo.png</file>
         <file>imagens/tiroInimigo.png</file>
         <file>imagens/escada.png</file>
+        <file>imagens/placa.png</file>
     </qresource>
 </RCC>

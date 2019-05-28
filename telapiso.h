@@ -8,9 +8,9 @@
 class TelaPiso: public QGraphicsTextItem
 {
 private:
-    int piso;
+    int piso = 0, PontosUpgrade = 0;
 public:
     TelaPiso(QGraphicsTextItem * parent = 0);
-    void setPiso(int value);
+    void setValores(int value, int value2);
 };
 #endif // TELAPISO_H

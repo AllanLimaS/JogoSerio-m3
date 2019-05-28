@@ -1,6 +1,5 @@
 #include "parede.h"
 #include <QGraphicsScene>
-#include <QDebug>
 
 Parede::Parede(int i, int j){
     QPixmap parede_png(QPixmap(":/imagens/imagens/parede.png"));
