@@ -4,6 +4,7 @@
 #include "tiro.h"
 #include "escada.h"
 #include "inimigo.h"
+#include "upgrades.h"
 #include <QKeyEvent>
 #include <QPixmap>
 #include <QGraphicsRectItem>
@@ -40,6 +41,17 @@ void Jogador::setAlcanceTiro(int value)
 int Jogador::getAlcanceTiro() const
 {
     return alcanceTiro;
+}
+
+void Jogador::setPontosUpgrade(int value)
+{
+    pontosUpgrade = value;
+}
+
+int Jogador::getPontosUpgrade() const
+{
+    return pontosUpgrade;
+
 }
 
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
@@ -112,6 +124,35 @@ void Jogador::keyPressEvent(QKeyEvent *event){
         scene()->addItem(tiro);
     }
 
+    QList<QGraphicsItem *> colliding_items = scene()->items();
+    for(int  i = 0, n = colliding_items.size(); i < n; i++){        // VE SE ESTA NO PISO DE UP
+        if(typeid(*(colliding_items[i]))== typeid (Upgrades)){
+
+            if (event->key() == Qt::Key_1){
+                if(getPontosUpgrade() > 0){
+                    // UPA ALGO
+                    setPontosUpgrade(getPontosUpgrade() - 1);
+                }
+            }
+            if (event->key() == Qt::Key_2){
+                if(getPontosUpgrade() > 0){
+                    // UPA ALGO
+                    setPontosUpgrade(getPontosUpgrade() - 1);
+                }
+
+            }
+            if (event->key() == Qt::Key_3){
+                if(getPontosUpgrade() > 0){
+                    // UPA ALGO
+                    setPontosUpgrade(getPontosUpgrade() - 1);
+                }
+
+            }
+
+        }
+
+    }
+
 }
 
 void Jogador::keyReleaseEvent(QKeyEvent *event){
@@ -138,7 +179,7 @@ void Jogador::keyReleaseEvent(QKeyEvent *event){
 
 void Jogador::movimento(){
 
-    Piso->setPiso(PisoAtual);
+    Piso->setValores(PisoAtual,getPontosUpgrade());
     scene()->addItem(Piso);     // IMPRIME O PISO ATUAL
 
     if (this->Up==true){
@@ -193,6 +234,7 @@ void Jogador::movimento(){
         }
     }
 
+
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int  i = 0, n = colliding_items.size(); i < n; i++){
         if(typeid(*(colliding_items[i])) == typeid (Escada)){
@@ -206,9 +248,19 @@ void Jogador::movimento(){
             }
             if(TemInimigo == 0){ // CASO N TENHA ELE PASSA PELA PORTA
                 setPos(600,263);
-                Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
-                scene()->addItem(inimigo);
                 PisoAtual = PisoAtual + 1;
+
+                if(PisoAtual % 5 == 0){
+                    Upgrades * upgrades = new Upgrades();
+                    scene()->addItem(upgrades);
+                } else {
+
+                    Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                    scene()->addItem(inimigo);
+                }
+
+                setPontosUpgrade(getPontosUpgrade() + 1);   // GANHA PONTOS DE UPGRADE
+
             } else {
                 TemInimigo = 0; //ZERA A VARIAVEL DNV
             }
