@@ -14,6 +14,7 @@ class Game: public QGraphicsView{
     Q_OBJECT
 private:
     int TIRAO = 0;
+    int DANO = 0;
 public:
     Game();
     Jogador * jogador;
@@ -22,6 +23,9 @@ public:
     BarraVida * barraVida;
     int getTIRAO() const;
     void setTIRAO(int value);
+
+    int getDANO() const;
+    void setDANO(int value);
 
 public slots:
     void atualizaTela();

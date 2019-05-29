@@ -11,13 +11,16 @@
 #include <QList>
 
 extern Game * game;
-extern Jogador * jogador;
+
 
 Inimigo::Inimigo(QGraphicsItem *parent): QObject(),QGraphicsPixmapItem(parent){
 
 }
 
 void Inimigo::Normal(){
+
+    game->setDANO(2); // DANO IGUAL A 2
+
     setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
@@ -31,6 +34,9 @@ void Inimigo::Normal(){
 }
 
 void Inimigo::Metralha(){
+
+    game->setDANO(1); //INIMIGO DA 1 DE DANO PQ SE DER MAIS VAI DAR RUIM
+
     setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
@@ -45,6 +51,9 @@ void Inimigo::Metralha(){
 
 
 void Inimigo::Inimigo12(){
+
+    game->setDANO(3); // INIMIGO DA 3 DANO PQ XM NÉ CARA MT BOA
+
     setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
@@ -59,6 +68,9 @@ void Inimigo::Inimigo12(){
 }
 
 void Inimigo::Sniper(){
+
+    game->setDANO(5); // INIMIGO DA 5 DA DANO FAMOSA AWP VARADA
+
     setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
     setPos(200+rand()%400,100+ rand()%350);
 

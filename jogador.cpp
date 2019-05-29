@@ -64,15 +64,11 @@ void Jogador::atirar(){
 void Jogador::verificaDano()
 {
     if(game->getTIRAO() == 1){
-        if(getVida() > 1){
-            setVida(getVida() - 1);
+        if(getVida() > game->getDANO()){
+            setVida(getVida() - game->getDANO());
             game->setTIRAO(0);
-            qDebug()<<getVida();
         } else {
-            //adicionar tela de morte MANO ALGUEM TESTA ISSO , TA MT QUEBRADO KASKDKASDKD
-//            game->close();
-//            Menu * menu = new Menu();
-//            menu->show();
+            game->close(); // FIM TEMPORARIO
         }
     }
 }
@@ -100,6 +96,16 @@ int Jogador::getMaxVida() const
 void Jogador::setMaxVida(int value)
 {
     MaxVida = value;
+}
+
+int Jogador::getDanoSofrido() const
+{
+    return DanoSofrido;
+}
+
+void Jogador::setDanoSofrido(int value)
+{
+    DanoSofrido = value;
 }
 
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
@@ -248,7 +254,6 @@ void Jogador::keyReleaseEvent(QKeyEvent *event){
     update();
 }
 
-
 void Jogador::movimento(){
 
     if (this->Up==true){
@@ -317,13 +322,23 @@ void Jogador::movimento(){
                 }
             }
             if(TemInimigo == 0){ // CASO N TENHA ELE PASSA PELA PORTA
+
                 setPos(600,263);
                 PisoAtual = PisoAtual + 1;
 
                 if(PisoAtual % 5 == 0){
                     Upgrades * upgrades = new Upgrades();
                     scene()->addItem(upgrades);
-                } else {
+
+                } else{
+
+                    QList<QGraphicsItem *> colliding_items = scene()->items();
+                    for(int  i = 0, n = colliding_items.size(); i < n; i++){
+                        if(typeid(*(colliding_items[i]))== typeid (Upgrades)){ // sempre procura uma placa para deletar
+                            scene()->removeItem(colliding_items[i]);
+                            delete (colliding_items[i]);
+                        }
+                    }
 
                     Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
                     int select = rand() % 4;
@@ -350,6 +365,7 @@ void Jogador::movimento(){
                 setPontosUpgrade(getPontosUpgrade() + 1);   // GANHA PONTOS DE UPGRADE
 
             } else {
+
                 TemInimigo = 0; //ZERA A VARIAVEL DNV
             }
         }

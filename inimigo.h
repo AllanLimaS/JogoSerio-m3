@@ -9,6 +9,7 @@
 
 class Inimigo:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
+
 public:
     Inimigo(QGraphicsItem * parent=0);
     void Inimigo12();
@@ -17,6 +18,7 @@ public:
     void Sniper();
 
     void rotateToPoint(QPointF p);
+
 public slots:
     void move();
     void atira();
