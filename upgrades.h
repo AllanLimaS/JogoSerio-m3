@@ -1,9 +1,9 @@
 #ifndef UPGRADES_H
 #define UPGRADES_H
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 
 
-class Upgrades : public QGraphicsRectItem
+class Upgrades : public QGraphicsPixmapItem
 {
 public:
     Upgrades();

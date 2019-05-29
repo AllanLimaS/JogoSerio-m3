@@ -12,13 +12,12 @@ class Jogador:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 private:
 
-    bool Up=0,Down=0,Right=0,Left=0;
+    bool Up=0,Down=0,Right=0,Left=0,podeAtirar=0;
 
     int velocidadeTiro,velocidadeMovimento,alcanceTiro;
     int pontosUpgrade = 0;
 
 
-    TelaPiso * Piso = new TelaPiso();
     int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
     int PisoAtual = 0;  // PISO ATUAL (JUST THAT)
 
@@ -38,6 +37,10 @@ public:
     int getAlcanceTiro() const;
     void setPontosUpgrade(int value);
     int getPontosUpgrade() const;
+    int getPisoAtual() const;
+
+public slots:
+    void atirar();
 };
 
 #endif // JOGADOR_H

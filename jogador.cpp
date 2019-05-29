@@ -10,6 +10,7 @@
 #include <QGraphicsRectItem>
 #include <QList>
 #include <QtDebug>
+#include <qtimer.h>
 
 extern Game * game;
 
@@ -54,12 +55,25 @@ int Jogador::getPontosUpgrade() const
 
 }
 
+void Jogador::atirar(){
+    podeAtirar=true;
+}
+
+int Jogador::getPisoAtual() const
+{
+    return PisoAtual;
+}
+
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
     setPixmap(QPixmap(":/imagens/imagens/player.png"));
     this->setVelocidadeTiro(50);
     this->setVelocidadeMovimento(10);
     this->setAlcanceTiro(10);        // nao funciona por algum motivo
+
+    QTimer * atirar_timer = new QTimer(this);
+    connect(atirar_timer,SIGNAL(timeout()),this,SLOT(atirar()));    //timer para deletar a bala
+    atirar_timer->start(250);
 
 }
 
@@ -92,36 +106,48 @@ void Jogador::keyPressEvent(QKeyEvent *event){
     }
 
     if (event->key() == Qt::Key_Up){                //tiro pra cima
-        Tiro * tiro = new Tiro();                   //cria
-        tiro->setPos(this->x()+10,this->y()+10);    //posiciona ele em cima do jogador
-        tiro->setRotation(260+rand()%20-rand()%20); //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
-        tiro->setVelocidade(this->velocidadeTiro);  //^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
-        tiro->setAlcance(this->alcanceTiro);
-        scene()->addItem(tiro);
+        if(podeAtirar==true){
+            Tiro * tiro = new Tiro();                   //cria
+            tiro->setPos(this->x()+10,this->y()+10);    //posiciona ele em cima do jogador
+            tiro->setRotation(260+rand()%20-rand()%20); //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
+            tiro->setVelocidade(this->velocidadeTiro);  //^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
+            tiro->setAlcance(this->alcanceTiro);
+            scene()->addItem(tiro);
+            podeAtirar=false;
+        }
     }
     if (event->key() == Qt::Key_Down){      //tiro pra baixo
-        Tiro * tiro = new Tiro();
-        tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(90+rand()%20-rand()%20);
-        tiro->setVelocidade(this->velocidadeTiro);
-        tiro->setAlcance(this->alcanceTiro);
-        scene()->addItem(tiro);
+        if(podeAtirar==true){
+            Tiro * tiro = new Tiro();
+            tiro->setPos(this->x()+10,this->y()+10);
+            tiro->setRotation(90+rand()%20-rand()%20);
+            tiro->setVelocidade(this->velocidadeTiro);
+            tiro->setAlcance(this->alcanceTiro);
+            scene()->addItem(tiro);
+            podeAtirar=false;
+        }
     }
     if (event->key() == Qt::Key_Right){     //tiro pra direita
-        Tiro * tiro = new Tiro();
-        tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(0+rand()%20-rand()%20);
-        tiro->setVelocidade(this->velocidadeTiro);
-        tiro->setAlcance(this->alcanceTiro);
-        scene()->addItem(tiro);
+        if(podeAtirar==true){
+            Tiro * tiro = new Tiro();
+            tiro->setPos(this->x()+10,this->y()+10);
+            tiro->setRotation(0+rand()%20-rand()%20);
+            tiro->setVelocidade(this->velocidadeTiro);
+            tiro->setAlcance(this->alcanceTiro);
+            scene()->addItem(tiro);
+            podeAtirar=false;
+        }
     }
     if (event->key() == Qt::Key_Left){      //tiro pra esquerda
-        Tiro * tiro = new Tiro();
-        tiro->setPos(this->x()+10,this->y()+10);
-        tiro->setRotation(180+rand()%20-rand()%20);
-        tiro->setVelocidade(this->velocidadeTiro);
-        tiro->setAlcance(this->alcanceTiro);
-        scene()->addItem(tiro);
+        if(podeAtirar==true){
+            Tiro * tiro = new Tiro();
+            tiro->setPos(this->x()+10,this->y()+10);
+            tiro->setRotation(180+rand()%20-rand()%20);
+            tiro->setVelocidade(this->velocidadeTiro);
+            tiro->setAlcance(this->alcanceTiro);
+            scene()->addItem(tiro);
+            podeAtirar=false;
+        }
     }
 
     QList<QGraphicsItem *> colliding_items = scene()->items();
@@ -178,9 +204,6 @@ void Jogador::keyReleaseEvent(QKeyEvent *event){
 
 
 void Jogador::movimento(){
-
-    Piso->setValores(PisoAtual,getPontosUpgrade());
-    scene()->addItem(Piso);     // IMPRIME O PISO ATUAL
 
     if (this->Up==true){
         setPos(x(),y()-this->velocidadeMovimento);

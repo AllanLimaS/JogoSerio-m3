@@ -7,6 +7,7 @@
 #include "escada.h"
 #include <QGraphicsScene>
 #include <QList>
+#include <QTimer>
 
 Game::Game():QGraphicsView(){
 
@@ -27,7 +28,10 @@ Game::Game():QGraphicsView(){
         }
     }
 
-    Jogador * jogador = new Jogador();
+    telaPiso = new TelaPiso();
+    scene->addItem(telaPiso);
+
+    jogador = new Jogador();
     scene->addItem(jogador);
     jogador->setPos(600,263);
     jogador->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -43,5 +47,13 @@ Game::Game():QGraphicsView(){
     Escada * escada = new Escada();
     scene->addItem(escada);
 
+    QTimer * atualiza_timer = new QTimer(this);
+    connect(atualiza_timer,SIGNAL(timeout()),this,SLOT(atualizaTela()));    //timer pra realizar cada movimento
+    atualiza_timer->start(50);
+}
+
+void Game::atualizaTela(){
+    telaPiso->setValores(jogador->getPisoAtual(),jogador->getPontosUpgrade());
+    //vida atualiza
 }
 
