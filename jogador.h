@@ -17,6 +17,9 @@ private:
     int velocidadeTiro,velocidadeMovimento,alcanceTiro;
     int pontosUpgrade = 0;
 
+    int MaxVida = 12;
+    int Vida = 12;
+
 
     int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
     int PisoAtual = 0;  // PISO ATUAL (JUST THAT)
@@ -39,8 +42,15 @@ public:
     int getPontosUpgrade() const;
     int getPisoAtual() const;
 
+    int getVida() const;
+    void setVida(int value);
+
+    int getMaxVida() const;
+    void setMaxVida(int value);
+
 public slots:
     void atirar();
+    void verificaDano();
 };
 
 #endif // JOGADOR_H

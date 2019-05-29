@@ -60,11 +60,12 @@ void TiroInimigo::move(){
             delete this;
             return;
         }
+
         if(typeid(*(colliding_items[i]))== typeid (Jogador)){
-            scene()->removeItem(colliding_items[i]);
-            delete (colliding_items[i]);    //mata o jogador
-            delete (this);
-            return;
+             game->setTIRAO(1);
+             scene()->removeItem(this);
+             delete this;
+             return;
         }
 
         if(typeid(*(colliding_items[i]))== typeid (Tiro)){

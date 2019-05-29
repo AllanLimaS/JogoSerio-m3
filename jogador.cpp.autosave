@@ -65,7 +65,6 @@ void Jogador::verificaDano()
         if(getVida() > 1){
             setVida(getVida() - 1);
             game->setTIRAO(0);
-            qDebug()<<getVida();
         } else {
             game->close();
             // VOLTAR PARA O MENU OU FAZER UMA TELA DE DERROTA

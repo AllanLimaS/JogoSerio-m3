@@ -8,6 +8,17 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <QTimer>
+#include <QDebug>
+
+int Game::getTIRAO() const
+{
+    return TIRAO;
+}
+
+void Game::setTIRAO(int value)
+{
+    TIRAO = value;
+}
 
 Game::Game():QGraphicsView(){
 
@@ -31,6 +42,9 @@ Game::Game():QGraphicsView(){
     telaPiso = new TelaPiso();
     scene->addItem(telaPiso);
 
+    barraVida = new BarraVida();
+    scene->addItem(barraVida);
+
     jogador = new Jogador();
     scene->addItem(jogador);
     jogador->setPos(600,263);
@@ -53,7 +67,9 @@ Game::Game():QGraphicsView(){
 }
 
 void Game::atualizaTela(){
+
     telaPiso->setValores(jogador->getPisoAtual(),jogador->getPontosUpgrade());
-    //vida atualiza
+    barraVida->setValores(jogador->getMaxVida(), jogador->getVida());
+
 }
 

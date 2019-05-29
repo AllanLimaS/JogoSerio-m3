@@ -35,7 +35,8 @@ SOURCES += \
         tiroinimigo.cpp \
     escada.cpp \
     telapiso.cpp \
-    upgrades.cpp
+    upgrades.cpp \
+    barravida.cpp
 
 HEADERS += \
     chao.h \
@@ -47,7 +48,8 @@ HEADERS += \
     tiroinimigo.h \
     escada.h \
     telapiso.h \
-    upgrades.h
+    upgrades.h \
+    barravida.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
