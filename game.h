@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "menu.h"
 #include "jogador.h"
 #include "telapiso.h"
 #include <QGraphicsView>

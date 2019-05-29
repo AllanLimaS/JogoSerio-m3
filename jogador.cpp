@@ -5,6 +5,8 @@
 #include "escada.h"
 #include "inimigo.h"
 #include "upgrades.h"
+#include "menu.h"
+
 #include <QKeyEvent>
 #include <QPixmap>
 #include <QGraphicsRectItem>
@@ -102,7 +104,9 @@ void Jogador::keyPressEvent(QKeyEvent *event){
     update();   //nao sei ao certo pra que serve isso asuydhaudshaushd
 
     if (event->key() == Qt::Key_Escape){    //quita do game quando o jogador está focado
-        exit(1);
+        game->close();
+        Menu * menu = new Menu();
+        menu->show();
     }
 
     if (event->key() == Qt::Key_Up){                //tiro pra cima

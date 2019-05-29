@@ -5,6 +5,7 @@
 #include "jogador.h"
 #include "inimigo.h"
 #include "escada.h"
+
 #include <QGraphicsScene>
 #include <QList>
 #include <QTimer>
