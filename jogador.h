@@ -19,6 +19,7 @@ private:
 
     int MaxVida = 12;
     int Vida = 12;
+    int DanoSofrido = 0;
 
 
     int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
@@ -47,6 +48,9 @@ public:
 
     int getMaxVida() const;
     void setMaxVida(int value);
+
+    int getDanoSofrido() const;
+    void setDanoSofrido(int value);
 
 public slots:
     void atirar();

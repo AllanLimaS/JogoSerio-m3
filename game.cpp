@@ -20,6 +20,16 @@ void Game::setTIRAO(int value)
     TIRAO = value;
 }
 
+int Game::getDANO() const
+{
+    return DANO;
+}
+
+void Game::setDANO(int value)
+{
+    DANO = value;
+}
+
 Game::Game():QGraphicsView(){
 
     scene = new QGraphicsScene(this);
@@ -51,10 +61,6 @@ Game::Game():QGraphicsView(){
     jogador->setFlag(QGraphicsItem::ItemIsFocusable);
     jogador->setFocus();
 
-    Inimigo * inimigo = new Inimigo();
-    inimigo->Normal();
-    scene->addItem(inimigo);
-
     setFixedSize(800,600);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -65,6 +71,13 @@ Game::Game():QGraphicsView(){
     QTimer * atualiza_timer = new QTimer(this);
     connect(atualiza_timer,SIGNAL(timeout()),this,SLOT(atualizaTela()));    //timer pra realizar cada movimento
     atualiza_timer->start(50);
+
+    //Inimigo * inimigo = new Inimigo();
+    //inimigo->Normal();
+    //scene->addItem(inimigo);
+
+    // ISSO QUEBRA DANO COMO EU FALEI PQ ACHO Q ELE CRIA
+    // O INIMIGO E N TEM ONDE ELE ALOCAR O DANO DELE ASSIM ELE QUEBRA
 }
 
 void Game::atualizaTela(){
