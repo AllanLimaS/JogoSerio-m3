@@ -15,7 +15,7 @@ TiroInimigo::TiroInimigo(QGraphicsItem *parent): QObject(),QGraphicsPixmapItem(p
 
     QTimer * move_timer = new QTimer(this);
     connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));    //timer pra realizar cada movimento
-    move_timer->start(50);
+    move_timer->start(20);
 
     QTimer * deleta_timer = new QTimer(this);
     connect(deleta_timer,SIGNAL(timeout()),this,SLOT(deleta()));    //timer para deletar a bala

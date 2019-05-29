@@ -52,6 +52,7 @@ Game::Game():QGraphicsView(){
     jogador->setFocus();
 
     Inimigo * inimigo = new Inimigo();
+    inimigo->Normal();
     scene->addItem(inimigo);
 
     setFixedSize(800,600);

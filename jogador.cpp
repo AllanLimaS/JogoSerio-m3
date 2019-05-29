@@ -105,7 +105,7 @@ void Jogador::setMaxVida(int value)
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
     setPixmap(QPixmap(":/imagens/imagens/player.png"));
-    this->setVelocidadeTiro(50);
+    this->setVelocidadeTiro(15);
     this->setVelocidadeMovimento(10);
     this->setAlcanceTiro(10);        // nao funciona por algum motivo
 
@@ -200,9 +200,10 @@ void Jogador::keyPressEvent(QKeyEvent *event){
 
             if (event->key() == Qt::Key_1){
                 if(getPontosUpgrade() >= 5){
-                    if(getVida() < 15)                              // RECUPERA VIDA
-                    setVida(getMaxVida());
-                    setPontosUpgrade(getPontosUpgrade() - 5);
+                    if(getVida() < 12){                              // RECUPERA VIDA
+                        setVida(getMaxVida());
+                        setPontosUpgrade(getPontosUpgrade() - 5);
+                    }
                 }
             }
             if (event->key() == Qt::Key_2){
@@ -325,6 +326,24 @@ void Jogador::movimento(){
                 } else {
 
                     Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                    int select = rand() % 4;
+                    switch(select){
+                    case 0:
+                        inimigo->Normal();
+                        break;
+                    case 1:
+                        inimigo->Inimigo12();
+                        break;
+                    case 2:
+                        inimigo->Metralha();
+                        break;
+                    case 3:
+                        inimigo->Sniper();
+                        break;
+                    default:
+                        inimigo->Normal();
+                        break;
+                    }
                     scene()->addItem(inimigo);
                 }
 
