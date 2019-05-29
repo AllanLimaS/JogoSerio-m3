@@ -2,6 +2,7 @@
 #include "game.h"
 #include <time.h>
 
+
     Game * game;
 
 int main(int argc, char *argv[])

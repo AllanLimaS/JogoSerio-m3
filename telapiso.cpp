@@ -1,4 +1,5 @@
 #include "telapiso.h"
+#include <QGraphicsScene>
 #include "QFont"
 
 TelaPiso::TelaPiso(QGraphicsTextItem * parent): QGraphicsTextItem (parent)
@@ -7,7 +8,6 @@ TelaPiso::TelaPiso(QGraphicsTextItem * parent): QGraphicsTextItem (parent)
     setDefaultTextColor(Qt::yellow);
     setFont(QFont("Comic",14));
     setPos(0,517);
-
 
 
 }

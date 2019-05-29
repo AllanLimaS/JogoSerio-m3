@@ -11,6 +11,7 @@
 #include <QList>
 
 extern Game * game;
+extern Jogador * jogador;
 
 Inimigo::Inimigo(QGraphicsItem *parent): QObject(),QGraphicsPixmapItem(parent){
     setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));

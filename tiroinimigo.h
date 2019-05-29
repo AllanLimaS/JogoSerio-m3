@@ -9,13 +9,15 @@
 class TiroInimigo: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 private:
-    int velocidade,alcance;
+
+    int velocidade, alcance;
+
 public:
+
     TiroInimigo(QGraphicsItem * parent=0);
     void setVelocidade(int value);
     void setAlcance(int value);
     int getAlcance() const;
-
     int getVelocidade() const;
 
 public slots:
