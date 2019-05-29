@@ -3,10 +3,6 @@
 
 Upgrades::Upgrades()
 {
-
-    QPixmap placa_png(QPixmap(":/imagens/imagens/placa.png"));
-
-        setRect(341, 91, 120, 120);       // AQUI TEM Q FAZER UM PLACA EXPLICANDO PAR O PLAYER COMO UPA
-        setBrush(QBrush(placa_png));
-
+    setPixmap(QPixmap(":/imagens/imagens/placa.png"));
+    setPos(341,91);
 }
