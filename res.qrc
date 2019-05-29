@@ -12,5 +12,7 @@
         <file>imagens/tiroInimigo.png</file>
         <file>imagens/escada.png</file>
         <file>imagens/placa.png</file>
+        <file>imagens/instrucoes.png</file>
+        <file>imagens/menu.png</file>
     </qresource>
 </RCC>
