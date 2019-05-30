@@ -15,13 +15,11 @@
         <file>imagens/instrucoes.png</file>
         <file>imagens/menu.png</file>
     </qresource>
-    <qresource prefix="/audios">
-        <file>audios/audioDano.wav</file>
-        <file>audios/audioDanoInimigo.wav</file>
-        <file>audios/audioDoze.wav</file>
-        <file>audios/audioPassaNivel.wav</file>
-        <file>audios/audioPistola.wav</file>
-        <file>audios/audioSniper.wav</file>
-        <file>audios/audioUpgrade.wav</file>
+    <qresource prefix="/audios"/>
+    <qresource prefix="/">
+        <file>audios/awp.wav</file>
+        <file>audios/glock.wav</file>
+        <file>audios/ump.wav</file>
+        <file>audios/xm.wav</file>
     </qresource>
 </RCC>

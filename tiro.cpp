@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <qmath.h>
 #include <QtDebug>
+#include <QSound>
 
     extern Game * game;
 

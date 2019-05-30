@@ -6,6 +6,7 @@
 #include "inimigo.h"
 #include "upgrades.h"
 #include "menu.h"
+#include <QSound>
 
 #include <QKeyEvent>
 #include <QPixmap>
@@ -164,6 +165,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
             tiro->setAlcance(this->alcanceTiro);
             scene()->addItem(tiro);
             podeAtirar=false;
+            QSound::play(":/audios/glock.wav");
         }
     }
     if (event->key() == Qt::Key_Down){      //tiro pra baixo
@@ -175,6 +177,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
             tiro->setAlcance(this->alcanceTiro);
             scene()->addItem(tiro);
             podeAtirar=false;
+            QSound::play(":/audios/glock.wav");
         }
     }
     if (event->key() == Qt::Key_Right){     //tiro pra direita
@@ -186,6 +189,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
             tiro->setAlcance(this->alcanceTiro);
             scene()->addItem(tiro);
             podeAtirar=false;
+            QSound::play(":/audios/glock.wav");
         }
     }
     if (event->key() == Qt::Key_Left){      //tiro pra esquerda
@@ -197,6 +201,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
             tiro->setAlcance(this->alcanceTiro);
             scene()->addItem(tiro);
             podeAtirar=false;
+            QSound::play(":/audios/glock.wav");
         }
     }
 
@@ -340,26 +345,52 @@ void Jogador::movimento(){
                         }
                     }
 
-                    Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
                     int select = rand() % 4;
+                    int Quant = rand() % 3;
                     switch(select){
-                    case 0:
-                        inimigo->Normal();
+                    case 0:                    
+                        for(int i =0; i<=Quant; i++){
+                            Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                            inimigo->Normal();
+                            scene()->addItem(inimigo);
+                        }
+
                         break;
                     case 1:
-                        inimigo->Inimigo12();
+
+                        for(int i =0; i<=Quant; i++){
+                            Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                            inimigo->Inimigo12();
+                            scene()->addItem(inimigo);
+                        }
+
                         break;
                     case 2:
-                        inimigo->Metralha();
+
+                        for(int i =0; i<=Quant; i++){
+                            Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                            inimigo->Metralha();
+                             scene()->addItem(inimigo);
+                        }
+
                         break;
                     case 3:
-                        inimigo->Sniper();
+                        for(int i =0; i<=Quant; i++){
+                            Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                            inimigo->Sniper();
+                             scene()->addItem(inimigo);
+                        }
+
                         break;
-                    default:
-                        inimigo->Normal();
+                    default:                        
+                        for(int i =0; i<=Quant; i++){
+                            Inimigo * inimigo = new Inimigo();  // CRIA NOVO INIMIGO
+                            inimigo->Normal();
+                             scene()->addItem(inimigo);
+                        }
+
                         break;
                     }
-                    scene()->addItem(inimigo);
                 }
 
                 setPontosUpgrade(getPontosUpgrade() + 1);   // GANHA PONTOS DE UPGRADE

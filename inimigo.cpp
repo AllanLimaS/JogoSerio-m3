@@ -9,6 +9,7 @@
 #include <qmath.h>
 #include <QtDebug>
 #include <QList>
+#include <QSound>
 
 extern Game * game;
 
@@ -120,6 +121,7 @@ void Inimigo::atira(){
     tiroInimigo ->setVelocidade(15);
     tiroInimigo ->setAlcance(10);
     scene()->addItem(tiroInimigo);
+    QSound::play(":/audios/glock.wav");
 
 }
 
@@ -131,6 +133,7 @@ void Inimigo::atiraMetralha(){
     tiroInimigo ->setVelocidade(18);
     tiroInimigo ->setAlcance(2);
     scene()->addItem(tiroInimigo);
+    QSound::play(":/audios/ump.wav");
 }
 
 void Inimigo::atiraSniper(){
@@ -148,6 +151,7 @@ void Inimigo::atiraSniper(){
     tiroInimigo ->setVelocidade(30);
     tiroInimigo ->setAlcance(2);
     scene()->addItem(tiroInimigo);
+    QSound::play(":/audios/awp.wav");
 }
 
 void Inimigo::atiraDeDoze(){
@@ -174,4 +178,5 @@ void Inimigo::atiraDeDoze(){
     scene()->addItem(tiroInimigo);
     scene()->addItem(tiroInimigo2);
     scene()->addItem(tiroInimigo3);
+    QSound::play(":/audios/xm.wav");
 }
