@@ -21,6 +21,7 @@ private:
     int MaxVida = 12;
     int Vida = 12;
     int DanoSofrido = 0;
+    int Arma = 0; // 0 PISTOLA // 1 DOZE // 2 SNIPER
 
     int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
     int PisoAtual = 0;  // PISO ATUAL (JUST THAT)
