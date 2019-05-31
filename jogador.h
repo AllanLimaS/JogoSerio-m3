@@ -12,15 +12,15 @@ class Jogador:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 private:
 
-    bool Up=0,Down=0,Right=0,Left=0,podeAtirar=0;
+    bool Up=0,Down=0,Right=0,Left=0,podeAtirar=0,
+         TiroUp=0,TiroDown=0,TiroRight=0,TiroLeft=0;
 
-    int velocidadeTiro,velocidadeMovimento,alcanceTiro;
+    int velocidadeTiro,velocidadeMovimento;
     int pontosUpgrade = 0;
 
     int MaxVida = 12;
     int Vida = 12;
     int DanoSofrido = 0;
-
 
     int TemInimigo = 0; // VARIAVEL PARA CONTROLE DE SAIDA
     int PisoAtual = 0;  // PISO ATUAL (JUST THAT)
@@ -32,13 +32,11 @@ public:
 
     void keyPressEvent(QKeyEvent * event);      //evento que ve a tecla pressionada
     void keyReleaseEvent(QKeyEvent * event);    //evento que ve a tecla solta
-    void movimento();                           //função q verifica quais teclas estão pressionadas no momento
+
     int getVelocidadeTiro() const;
     void setVelocidadeTiro(int value);
     int getVelocidadeMovimento() const;
     void setVelocidadeMovimento(int value);
-    void setAlcanceTiro(int value);
-    int getAlcanceTiro() const;
     void setPontosUpgrade(int value);
     int getPontosUpgrade() const;
     int getPisoAtual() const;
@@ -55,6 +53,7 @@ public:
 public slots:
     void atirar();
     void verificaDano();
+    void acao();                //funcao onde realiza o movimento SUAVEEEEEEEEEEEEEEE
 };
 
 #endif // JOGADOR_H
