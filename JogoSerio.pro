@@ -36,6 +36,7 @@ SOURCES += \
         jogador.cpp \
         main.cpp \
         parede.cpp \
+    telas.cpp \
         tiro.cpp \
         tiroinimigo.cpp \
     escada.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     inimigo.h \
     jogador.h \
     parede.h \
+    telas.h \
     tiro.h \
     tiroinimigo.h \
     escada.h \

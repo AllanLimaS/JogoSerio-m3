@@ -1,5 +1,6 @@
 #include "menu.h"
 #include "game.h"
+#include "telas.h"
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
@@ -34,8 +35,10 @@ void Menu::keyPressEvent(QKeyEvent *event){
     }
 
     if (event->key() == Qt::Key_3){
-        scene->setBackgroundBrush(QPixmap(":/imagens/imagens/instrucoes.png"));
-
+        Telas * instrucoes = new Telas();
+        instrucoes->TelaInstrucoes();
+        instrucoes->show();
+        this->close();
     }
 
     if (event->key() == Qt::Key_Escape){
