@@ -124,46 +124,184 @@ void Jogador::acao(){
 
     if (this->TiroUp==true){                //tiro pra cima
         if(podeAtirar==true){
-            Tiro * tiro = new Tiro();                   //cria
-            tiro->setPos(this->x()+10,this->y()+10);    //posiciona ele em cima do jogador
-            tiro->setRotation(260+rand()%20-rand()%20); //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
-            tiro->setVelocidade(this->velocidadeTiro);  //^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
-            scene()->addItem(tiro);
-            podeAtirar=false;
-            QSound::play(":/audios/glock.wav");
+            if(Arma == 0){ // PISTOL
+                Tiro * tiro = new Tiro();                   //cria
+                tiro->setPos(this->x()+10,this->y()+10);    //posiciona ele em cima do jogador
+                tiro->setRotation(260+rand()%20-rand()%20); //seta a angulagem do tiro , o rand ali eh pra o tiro nao sair retinho
+                tiro->setVelocidade(this->velocidadeTiro);  //^^ para deixr o tiro retinho eh só deixar os setRotation em multiplos de 90
+                scene()->addItem(tiro);
+                podeAtirar=false;
+                QSound::play(":/audios/glock.wav");
+            }
+            if(Arma == 1){ // XM
+                Tiro * tiro =  new Tiro();
+                Tiro * tiro2 = new Tiro();
+                Tiro * tiro3 = new Tiro();
+
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro2 ->setPos(this->x()+10,this->y()+10);
+                tiro3 ->setPos(this->x()+10,this->y()+10);
+
+                tiro ->setRotation(260+rand()%20-rand()%20);
+                tiro2 ->setRotation(260+rand()%20-rand()%20);
+                tiro3 ->setRotation(260+rand()%20-rand()%20);
+
+                tiro->setVelocidade(this->velocidadeTiro);
+                tiro2->setVelocidade(this->velocidadeTiro);
+                tiro3->setVelocidade(this->velocidadeTiro);
+
+
+                scene()->addItem(tiro);
+                scene()->addItem(tiro2);
+                scene()->addItem(tiro3);
+                podeAtirar=false;
+                QSound::play(":/audios/xm.wav");
+            }
+            if(Arma == 2){ // AWP
+                Tiro * tiro =  new Tiro();
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro ->setRotation(260+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                QSound::play(":/audios/awp.wav");
+            }
         }
     }
     if (this->TiroDown==true){      //tiro pra baixo
         if(podeAtirar==true){
-            Tiro * tiro = new Tiro();
-            tiro->setPos(this->x()+10,this->y()+10);
-            tiro->setRotation(90+rand()%20-rand()%20);
-            tiro->setVelocidade(this->velocidadeTiro);
-            scene()->addItem(tiro);
-            podeAtirar=false;
-            QSound::play(":/audios/glock.wav");
+            if(Arma == 0){ // PISTOL
+                Tiro * tiro = new Tiro();
+                tiro->setPos(this->x()+10,this->y()+10);
+                tiro->setRotation(90+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                podeAtirar=false;
+                QSound::play(":/audios/glock.wav");
+            }
+            if(Arma == 1){
+                if(Arma == 1){ // XM
+                    Tiro * tiro =  new Tiro();
+                    Tiro * tiro2 = new Tiro();
+                    Tiro * tiro3 = new Tiro();
+
+                    tiro ->setPos(this->x()+10,this->y()+10);
+                    tiro2 ->setPos(this->x()+10,this->y()+10);
+                    tiro3 ->setPos(this->x()+10,this->y()+10);
+
+                    tiro ->setRotation(90+rand()%20-rand()%20);
+                    tiro2 ->setRotation(90+rand()%20-rand()%20);
+                    tiro3 ->setRotation(90+rand()%20-rand()%20);
+
+                    tiro->setVelocidade(this->velocidadeTiro);
+                    tiro2->setVelocidade(this->velocidadeTiro);
+                    tiro3->setVelocidade(this->velocidadeTiro);
+
+
+                    scene()->addItem(tiro);
+                    scene()->addItem(tiro2);
+                    scene()->addItem(tiro3);
+                    podeAtirar=false;
+                    QSound::play(":/audios/xm.wav");
+                }
+            }
+
+            if(Arma == 2){ // AWP
+                Tiro * tiro =  new Tiro();
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro ->setRotation(90+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                QSound::play(":/audios/awp.wav");
+            }
         }
     }
     if (this->TiroRight==true){     //tiro pra direita
         if(podeAtirar==true){
-            Tiro * tiro = new Tiro();
-            tiro->setPos(this->x()+10,this->y()+10);
-            tiro->setRotation(0+rand()%20-rand()%20);
-            tiro->setVelocidade(this->velocidadeTiro);
-            scene()->addItem(tiro);
-            podeAtirar=false;
-            QSound::play(":/audios/glock.wav");
+            if(Arma == 0){ // PISTOL
+                Tiro * tiro = new Tiro();
+                tiro->setPos(this->x()+10,this->y()+10);
+                tiro->setRotation(0+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                podeAtirar=false;
+                QSound::play(":/audios/glock.wav");
+            }
+            if(Arma == 1){ // XM
+                Tiro * tiro =  new Tiro();
+                Tiro * tiro2 = new Tiro();
+                Tiro * tiro3 = new Tiro();
+
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro2 ->setPos(this->x()+10,this->y()+10);
+                tiro3 ->setPos(this->x()+10,this->y()+10);
+
+                tiro ->setRotation(0+rand()%20-rand()%20);
+                tiro2 ->setRotation(0+rand()%20-rand()%20);
+                tiro3 ->setRotation(0+rand()%20-rand()%20);
+
+                tiro->setVelocidade(this->velocidadeTiro);
+                tiro2->setVelocidade(this->velocidadeTiro);
+                tiro3->setVelocidade(this->velocidadeTiro);
+
+
+                scene()->addItem(tiro);
+                scene()->addItem(tiro2);
+                scene()->addItem(tiro3);
+                podeAtirar=false;
+                QSound::play(":/audios/xm.wav");
+            }
+            if(Arma == 2){ // AWP
+                Tiro * tiro =  new Tiro();
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro ->setRotation(0+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                QSound::play(":/audios/awp.wav");
+            }
         }
     }
     if (this->TiroLeft==true){      //tiro pra esquerda
         if(podeAtirar==true){
-            Tiro * tiro = new Tiro();
-            tiro->setPos(this->x()+10,this->y()+10);
-            tiro->setRotation(180+rand()%20-rand()%20);
-            tiro->setVelocidade(this->velocidadeTiro);
-            scene()->addItem(tiro);
-            podeAtirar=false;
-            QSound::play(":/audios/glock.wav");
+            if(Arma == 0){ // PISTOL
+                Tiro * tiro = new Tiro();
+                tiro->setPos(this->x()+10,this->y()+10);
+                tiro->setRotation(180+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                podeAtirar=false;
+                QSound::play(":/audios/glock.wav");
+            }
+            if(Arma == 1){ // XM
+                Tiro * tiro =  new Tiro();
+                Tiro * tiro2 = new Tiro();
+                Tiro * tiro3 = new Tiro();
+
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro2 ->setPos(this->x()+10,this->y()+10);
+                tiro3 ->setPos(this->x()+10,this->y()+10);
+
+                tiro ->setRotation(180+rand()%20-rand()%20);
+                tiro2 ->setRotation(180+rand()%20-rand()%20);
+                tiro3 ->setRotation(180+rand()%20-rand()%20);
+
+                tiro->setVelocidade(this->velocidadeTiro);
+                tiro2->setVelocidade(this->velocidadeTiro);
+                tiro3->setVelocidade(this->velocidadeTiro);
+
+                scene()->addItem(tiro);
+                scene()->addItem(tiro2);
+                scene()->addItem(tiro3);
+                podeAtirar=false;
+                QSound::play(":/audios/xm.wav");
+            }
+            if(Arma == 2){ // AWP
+                Tiro * tiro =  new Tiro();
+                tiro ->setPos(this->x()+10,this->y()+10);
+                tiro ->setRotation(180+rand()%20-rand()%20);
+                tiro->setVelocidade(this->velocidadeTiro);
+                scene()->addItem(tiro);
+                QSound::play(":/audios/awp.wav");
+            }
         }
     }
 
@@ -187,7 +325,7 @@ void Jogador::acao(){
                 setPos(600,263);
                 PisoAtual = PisoAtual + 1;
 
-                if(PisoAtual % 5 == 0){
+                if(PisoAtual % 10 == 0){
                     Upgrades * upgrades = new Upgrades();
                     scene()->addItem(upgrades);
 
@@ -202,7 +340,22 @@ void Jogador::acao(){
                     }
 
                     int select = rand() % 4;
-                    int Quant = rand() % 3;
+                    int Quant;
+
+                    if(PisoAtual < 10){
+                        Quant = rand()%1;   // 1 OU 2 INIMIGOS
+
+                    } else if (PisoAtual<20){
+                        Quant = rand()%2;   // 1, 2 OU 3 INIMIGOS
+
+                    } else {
+                        Quant = rand()%2;   // 2, 3 OU 4 INIMIGOS
+                        Quant = Quant + 1;
+
+                    }
+
+
+
                     switch(select){
                     case 0:
                         for(int i =0; i<=Quant; i++){
@@ -346,7 +499,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
         menu->show();
     }
 
-    if (event->key() == Qt::Key_Up){                //tiro pra cima
+    if (event->key() == Qt::Key_Up){         //tiro pra cima
         this->TiroUp = true;
     }
     if (event->key() == Qt::Key_Down){      //tiro pra baixo
@@ -383,13 +536,36 @@ void Jogador::keyPressEvent(QKeyEvent *event){
                     // UPA ALGO
                     setPontosUpgrade(getPontosUpgrade() - 1);
                 }
-
             }
 
+            if(event->key() == Qt::Key_F1){
+                if(Arma != 0){
+                    if(getPontosUpgrade() > 3){                     // COMPRA PISTOLA CASO NESTEJA COM ELA
+                        Arma = 0;
+                        setPontosUpgrade(getPontosUpgrade() - 7);
+                    }
+                }
+            }
+
+            if(event->key()== Qt::Key_F2){
+                if(Arma != 1){
+                    if(getPontosUpgrade() > 7){                    // COMPRA XM CASO N ESTEJA COM ELA
+                        Arma = 1;
+                        setPontosUpgrade(getPontosUpgrade() - 7);
+                    }
+                }
+            }
+
+            if(event->key()== Qt::Key_F3){
+                if(Arma != 2){
+                    if(getPontosUpgrade() > 9){                    // COMPRA SNIPER CASO N ESTEJA COM ELA
+                        Arma = 2;
+                        setPontosUpgrade(getPontosUpgrade() - 10);
+                    }
+                }
+            }
         }
-
     }
-
 }
 
 void Jogador::keyReleaseEvent(QKeyEvent *event){
