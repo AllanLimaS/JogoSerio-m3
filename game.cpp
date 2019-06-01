@@ -40,24 +40,50 @@ void Game::setDanoJogador(int value)
     DanoJogador = value;
 }
 
+void Game::criaMapa(){
+
+    switch(rand()%2){
+
+    case 0:     // mapa original
+        for(int i = 0; i<13; i++){
+            for(int j = 0; j<13; j++){
+                if(i==0||j==0||i==12||j==12){
+                    Parede * parede = new Parede(i, j,0);
+                    scene -> addItem(parede);
+                } else {
+                    Chao * chao = new Chao(i,j,0);
+                    scene->addItem(chao);
+                }
+            }
+        }
+        scene->setBackgroundBrush(QPixmap(":/imagens/imagens/parede.png"));
+        break;
+
+    case 1:    //dust
+        for(int i = 0; i<13; i++){
+            for(int j = 0; j<13; j++){
+                if(i==0||j==0||i==12||j==12){
+                    Parede * parede = new Parede(i, j,1);
+                    scene -> addItem(parede);
+                } else {
+                    Chao * chao = new Chao(i,j,1);
+                    scene->addItem(chao);
+                }
+
+            }
+        }
+        scene->setBackgroundBrush(QPixmap(":/tiles/imagens/mapas/dust_parede2.bmp"));
+        break;
+    }
+}
+
 Game::Game():QGraphicsView(){
 
     scene = new QGraphicsScene(this);
     scene->setSceneRect(0,0,800,600);
     setScene(scene);
-    scene->setBackgroundBrush(QPixmap(":/imagens/imagens/parede.png"));
 
-    for(int i = 0; i<13; i++){
-        for(int j = 0; j<13; j++){
-            if(i==0||j==0||i==12||j==12){
-                Parede * parede = new Parede(i, j);
-                scene -> addItem(parede);
-            } else {
-                Chao * chao = new Chao(i,j);
-                scene->addItem(chao);
-            }
-        }
-    }
+    criaMapa(); //randomiza o mapa e cria
 
     telaPiso = new TelaPiso();
     scene->addItem(telaPiso);

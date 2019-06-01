@@ -5,7 +5,7 @@
 class Parede: public QGraphicsRectItem
 {
 public:
-    Parede(int i,int j);
+    Parede(int i,int j,int mapa);
 };
 
 

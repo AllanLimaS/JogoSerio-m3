@@ -15,11 +15,19 @@
         <file>imagens/instrucoes.png</file>
         <file>imagens/menu.png</file>
     </qresource>
-    <qresource prefix="/audios"/>
     <qresource prefix="/">
         <file>audios/awp.wav</file>
         <file>audios/glock.wav</file>
         <file>audios/ump.wav</file>
         <file>audios/xm.wav</file>
+    </qresource>
+    <qresource prefix="/tiles">
+        <file>imagens/mapas/dust_chao1.bmp</file>
+        <file>imagens/mapas/dust_chao2.bmp</file>
+        <file>imagens/mapas/dust_chao3.bmp</file>
+        <file>imagens/mapas/dust_chao4.bmp</file>
+        <file>imagens/mapas/dust_parede1.bmp</file>
+        <file>imagens/mapas/dust_parede2.bmp</file>
+        <file>imagens/mapas/dust_parede3.bmp</file>
     </qresource>
 </RCC>
