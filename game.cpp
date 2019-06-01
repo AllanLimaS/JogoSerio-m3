@@ -30,6 +30,16 @@ void Game::setDANO(int value)
     DANO = value;
 }
 
+int Game::getDanoJogador() const
+{
+    return DanoJogador;
+}
+
+void Game::setDanoJogador(int value)
+{
+    DanoJogador = value;
+}
+
 Game::Game():QGraphicsView(){
 
     scene = new QGraphicsScene(this);
