@@ -31,6 +31,8 @@ public:
     int getDanoJogador() const;
     void setDanoJogador(int value);
 
+    void criaMapa();
+
 public slots:
     void atualizaTela();
 };
