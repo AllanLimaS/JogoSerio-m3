@@ -6,6 +6,7 @@
 #include "inimigo.h"
 #include "upgrades.h"
 #include "menu.h"
+#include "boss.h"
 
 #include <QSound>
 #include <QKeyEvent>
@@ -319,6 +320,11 @@ void Jogador::acao(){
                     //TEM INIMIGO AINDA N PODE SAIR
                     TemInimigo = 1;
                 }
+                if(typeid(*(colliding_items[i]))== typeid (Boss)){
+                    //TEM BOSS AINDA N PODE SAIR
+                    TemInimigo = 1;
+                }
+
             }
             if(TemInimigo == 0){ // CASO N TENHA ELE PASSA PELA PORTA
 
@@ -328,6 +334,10 @@ void Jogador::acao(){
                 if(PisoAtual % 10 == 0){
                     Upgrades * upgrades = new Upgrades();
                     scene()->addItem(upgrades);
+
+                } else if(PisoAtual % 15 == 0){
+                    Boss * boss = new Boss();
+                    scene()->addItem(boss);
 
                 }else{
 
@@ -542,7 +552,8 @@ void Jogador::keyPressEvent(QKeyEvent *event){
                 if(Arma != 0){
                     if(getPontosUpgrade() > 3){                     // COMPRA PISTOLA CASO NESTEJA COM ELA
                         Arma = 0;
-                        setPontosUpgrade(getPontosUpgrade() - 7);
+                        setPontosUpgrade(getPontosUpgrade() - 3);
+                        game->setDanoJogador(1);
                     }
                 }
             }
@@ -552,6 +563,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
                     if(getPontosUpgrade() > 7){                    // COMPRA XM CASO N ESTEJA COM ELA
                         Arma = 1;
                         setPontosUpgrade(getPontosUpgrade() - 7);
+                        game->setDanoJogador(2);
                     }
                 }
             }
@@ -561,6 +573,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
                     if(getPontosUpgrade() > 9){                    // COMPRA SNIPER CASO N ESTEJA COM ELA
                         Arma = 2;
                         setPontosUpgrade(getPontosUpgrade() - 10);
+                        game->setDanoJogador(4);
                     }
                 }
             }
