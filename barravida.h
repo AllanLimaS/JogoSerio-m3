@@ -4,12 +4,14 @@
 
 class BarraVida : public QGraphicsRectItem
 {
-private:
-    QGraphicsRectItem maxLifeBar;
-    QGraphicsRectItem lifeBar;
 public:
+
+    QGraphicsRectItem * maxLifeBar;
+    QGraphicsRectItem *lifeBar;
+
     BarraVida();
     void setValores(int Max, int Vida);
+
 };
 
 #endif // BARRAVIDA_H

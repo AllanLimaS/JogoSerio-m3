@@ -5,6 +5,8 @@
 #include "jogador.h"
 #include "inimigo.h"
 #include "escada.h"
+#include "barravida.h"
+
 #include <QGraphicsScene>
 #include <QList>
 #include <QTimer>
@@ -41,6 +43,18 @@ void Game::setDanoJogador(int value)
 }
 
 void Game::criaMapa(){
+
+    QList<QGraphicsItem *> colliding_items = scene->items();
+    for(int  i = 0, n = colliding_items.size(); i < n; i++){
+        if(typeid(*(colliding_items[i]))== typeid (Parede)){    //exclui as paredes do mapa
+            scene->removeItem(colliding_items[i]);
+            delete (colliding_items[i]);
+        }
+        if(typeid(*(colliding_items[i]))== typeid (Chao)){      //exclui os chaos
+            scene->removeItem(colliding_items[i]);
+            delete (colliding_items[i]);
+        }
+    }
 
     switch(rand()%2){
 
@@ -89,7 +103,8 @@ Game::Game():QGraphicsView(){
     scene->addItem(telaPiso);
 
     barraVida = new BarraVida();
-    scene->addItem(barraVida);
+    scene->addItem(barraVida->maxLifeBar);
+    scene->addItem(barraVida->lifeBar);
 
     jogador = new Jogador();
     scene->addItem(jogador);
