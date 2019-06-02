@@ -71,7 +71,15 @@ void Jogador::acao(){
 
     if (this->Up==true){
         setPos(x(),y()-this->velocidadeMovimento);
-        setPixmap(QPixmap(":/imagens/imagens/player_up.png"));
+
+        if(Arma == 0){      //usp
+            setPixmap(QPixmap(":/player/imagens/player/player_usp_up.png"));
+        }else if(Arma == 1){
+            setPixmap(QPixmap(":/player/imagens/player/player_xm_up.png"));
+        }else if(Arma == 2){
+            setPixmap(QPixmap(":/player/imagens/player/player_awp_up.png"));
+        }
+
         QList<QGraphicsItem *> colliding_items = collidingItems();
         for(int  i = 0, n = colliding_items.size(); i < n; i++){
             if(typeid(*(colliding_items[i]))== typeid (Parede)){
@@ -83,8 +91,17 @@ void Jogador::acao(){
     }
 
     if(this->Down==true){
+
         setPos(x(),y()+this->velocidadeMovimento);
-        setPixmap(QPixmap(":/imagens/imagens/player_down.png"));
+
+        if(Arma == 0){
+            setPixmap(QPixmap(":/player/imagens/player/player_usp_down.png"));
+        }else if(Arma == 1){
+            setPixmap(QPixmap(":/player/imagens/player/player_xm_down.png"));
+        }else if(Arma == 2){
+            setPixmap(QPixmap(":/player/imagens/player/player_awp_down.png"));
+        }
+
         QList<QGraphicsItem *> colliding_items = collidingItems();
         for(int  i = 0, n = colliding_items.size(); i < n; i++){
             if(typeid(*(colliding_items[i]))== typeid (Parede)){
@@ -97,7 +114,15 @@ void Jogador::acao(){
 
     if(this->Right==true){
         setPos(x()+this->velocidadeMovimento,y());
-        setPixmap(QPixmap(":/imagens/imagens/player_right.png"));
+
+        if(Arma == 0){
+            setPixmap(QPixmap(":/player/imagens/player/player_usp_right.png"));
+        }else if(Arma == 1){
+            setPixmap(QPixmap(":/player/imagens/player/player_xm_down.png"));
+        }else if(Arma == 2){
+            setPixmap(QPixmap(":/player/imagens/player/player_awp_down.png"));
+        }
+
         QList<QGraphicsItem *> colliding_items = collidingItems();
         for(int  i = 0, n = colliding_items.size(); i < n; i++){
             if(typeid(*(colliding_items[i]))== typeid (Parede)){
@@ -110,7 +135,15 @@ void Jogador::acao(){
 
     if(this->Left==true){
         setPos(x()-this->velocidadeMovimento,y());
-        setPixmap(QPixmap(":/imagens/imagens/player_left.png"));
+
+        if(Arma == 0){
+            setPixmap(QPixmap(":/player/imagens/player/player_usp_left.png"));
+        }else if(Arma == 1){
+            setPixmap(QPixmap(":/player/imagens/player/player_xm_left.png"));
+        }else if(Arma == 2){
+            setPixmap(QPixmap(":/player/imagens/player/player_awp_left.png"));
+        }
+
         QList<QGraphicsItem *> colliding_items = collidingItems();
         for(int  i = 0, n = colliding_items.size(); i < n; i++){
             if(typeid(*(colliding_items[i]))== typeid (Parede)){
@@ -328,7 +361,9 @@ void Jogador::acao(){
             }
             if(TemInimigo == 0){ // CASO N TENHA ELE PASSA PELA PORTA
 
-                setPos(600,263);
+                game->criaMapa();
+
+                setPos(550,263);
                 PisoAtual = PisoAtual + 1;
 
                 if(PisoAtual % 10 == 0){
@@ -459,7 +494,7 @@ void Jogador::setDanoSofrido(int value)
 
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
-    setPixmap(QPixmap(":/imagens/imagens/player.png"));
+    setPixmap(QPixmap(":/player/imagens/player/player_usp_left.png"));
     this->setVelocidadeTiro(15);
     this->setVelocidadeMovimento(10);
 

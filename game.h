@@ -12,16 +12,20 @@
 
 class Game: public QGraphicsView{
     Q_OBJECT
+
 private:
     int TIRAO = 0;
     int DANO = 0;
     int DanoJogador = 1;
+
 public:
     Game();
+
     Jogador * jogador;
     QGraphicsScene * scene;
     TelaPiso * telaPiso;
     BarraVida * barraVida;
+
     int getTIRAO() const;
     void setTIRAO(int value);
 

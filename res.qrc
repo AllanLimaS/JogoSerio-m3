@@ -30,4 +30,18 @@
         <file>imagens/mapas/dust_parede2.bmp</file>
         <file>imagens/mapas/dust_parede3.bmp</file>
     </qresource>
+    <qresource prefix="/player">
+        <file>imagens/player/player_usp_down.png</file>
+        <file>imagens/player/player_usp_left.png</file>
+        <file>imagens/player/player_usp_right.png</file>
+        <file>imagens/player/player_usp_up.png</file>
+        <file>imagens/player/player_awp_down.png</file>
+        <file>imagens/player/player_awp_left.png</file>
+        <file>imagens/player/player_awp_right.png</file>
+        <file>imagens/player/player_awp_up.png</file>
+        <file>imagens/player/player_xm_down.png</file>
+        <file>imagens/player/player_xm_left.png</file>
+        <file>imagens/player/player_xm_right.png</file>
+        <file>imagens/player/player_xm_up.png</file>
+    </qresource>
 </RCC>
