@@ -154,6 +154,21 @@ void Jogador::acao(){
         }
     }
 
+    // LOGICA CAGADA PRA O PLAYER ANDAR NA DIAGONAL UHSAUFHASUFHSA
+//    setRotation(0);
+//    if(this->Left==true and this->Up==true){
+//        setRotation(45);
+//    }
+//    if(this->Right==true and this->Up==true){
+//        setRotation(315);
+//    }
+//    if(this->Left==true and this->Down==true){
+//        setRotation(-45);
+//    }
+//    if(this->Right==true and this->Down==true){
+//        setRotation(-315);
+//    }
+
 //________________________________________TIRO________________________________________//
 
     if (this->TiroUp==true){                //tiro pra cima
@@ -496,15 +511,15 @@ Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
     setPixmap(QPixmap(":/player/imagens/player/player_usp_left.png"));
     this->setVelocidadeTiro(15);
-    this->setVelocidadeMovimento(10);
+    this->setVelocidadeMovimento(2);
 
     QTimer * atirar_timer = new QTimer(this);
-    connect(atirar_timer,SIGNAL(timeout()),this,SLOT(atirar()));    //timer para deletar a bala
+    connect(atirar_timer,SIGNAL(timeout()),this,SLOT(atirar()));
     atirar_timer->start(250);
 
     QTimer * acao_timer = new QTimer(this);
-    connect(acao_timer,SIGNAL(timeout()),this,SLOT(acao()));    //timer para deletar a bala
-    acao_timer->start(50);
+    connect(acao_timer,SIGNAL(timeout()),this,SLOT(acao()));
+    acao_timer->start(10);
 
     QTimer * verifica_timer = new QTimer(this);
     connect(verifica_timer,SIGNAL(timeout()),this,SLOT(verificaDano()));    //timer para deletar a bala
@@ -572,7 +587,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
             if (event->key() == Qt::Key_2){
                 if(getPontosUpgrade() > 0){
                     setVelocidadeMovimento(getVelocidadeMovimento()+1); //ANDA MAIS RAPIDO
-                    setPontosUpgrade(getPontosUpgrade() - 1);
+                    setPontosUpgrade(getPontosUpgrade() - 1);           //tem que ajeitar isso pq quebra dps de um certo ponto
                 }
 
             }

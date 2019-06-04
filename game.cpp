@@ -108,7 +108,7 @@ Game::Game():QGraphicsView(){
 
     jogador = new Jogador();
     scene->addItem(jogador);
-    jogador->setPos(600,263);
+    jogador->setPos(550,263);
     jogador->setFlag(QGraphicsItem::ItemIsFocusable);
     jogador->setFocus();
 
