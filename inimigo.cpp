@@ -22,12 +22,12 @@ void Inimigo::Normal(){
 
     game->setDANO(2); // DANO IGUAL A 2
 
-    setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
+    setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_glock.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
     QTimer * move_timer = new QTimer(this);
     connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));
-    move_timer->start(500);
+    move_timer->start(15);
 
     QTimer * atira_timer = new QTimer(this);
     connect(atira_timer,SIGNAL(timeout()),this,SLOT(atira()));
@@ -38,12 +38,12 @@ void Inimigo::Metralha(){
 
     game->setDANO(1); //INIMIGO DA 1 DE DANO PQ SE DER MAIS VAI DAR RUIM
 
-    setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
+    setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_ump.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
     QTimer * move_timer = new QTimer(this);
     connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));
-    move_timer->start(500);
+    move_timer->start(25);
 
     QTimer * atira_timer = new QTimer(this);
     connect(atira_timer,SIGNAL(timeout()),this,SLOT(atiraMetralha()));
@@ -55,12 +55,12 @@ void Inimigo::Inimigo12(){
 
     game->setDANO(3); // INIMIGO DA 3 DANO PQ XM NÉ CARA MT BOA
 
-    setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
+    setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_xm.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
     QTimer * move_timer = new QTimer(this);
     connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));
-    move_timer->start(400);
+    move_timer->start(17);
 
     QTimer * atira_timer = new QTimer(this);
     connect(atira_timer,SIGNAL(timeout()),this,SLOT(atiraDeDoze()));
@@ -72,12 +72,12 @@ void Inimigo::Sniper(){
 
     game->setDANO(5); // INIMIGO DA 5 DA DANO FAMOSA AWP VARADA
 
-    setPixmap(QPixmap(":/imagens/imagens/inimigo.png"));
+    setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_awp.png"));
     setPos(200+rand()%400,100+ rand()%350);
 
     QTimer * move_timer = new QTimer(this);
     connect(move_timer,SIGNAL(timeout()),this,SLOT(move()));
-    move_timer->start(4000);
+    move_timer->start(50);
 
     QTimer * atira_timer = new QTimer(this);
     connect(atira_timer,SIGNAL(timeout()),this,SLOT(atiraSniper()));
@@ -102,7 +102,7 @@ void Inimigo::move(){
         }
     }
 
-    int STEP_SIZE = 10;
+    int STEP_SIZE = 1;
     double theta = rotation();
 
     double dy = STEP_SIZE * qSin(( theta * M_PI ) / 180);       //conta para faze o movimento com angulação

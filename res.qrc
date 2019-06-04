@@ -44,4 +44,10 @@
         <file>imagens/player/player_xm_right.png</file>
         <file>imagens/player/player_xm_up.png</file>
     </qresource>
+    <qresource prefix="/inimigo">
+        <file>imagens/inimigos/inimigo_awp.png</file>
+        <file>imagens/inimigos/inimigo_glock.png</file>
+        <file>imagens/inimigos/inimigo_ump.png</file>
+        <file>imagens/inimigos/inimigo_xm.png</file>
+    </qresource>
 </RCC>
