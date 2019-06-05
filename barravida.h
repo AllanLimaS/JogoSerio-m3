@@ -9,8 +9,11 @@ public:
     QGraphicsRectItem * maxLifeBar;
     QGraphicsRectItem *lifeBar;
 
+    QGraphicsRectItem * maxArmorBar;
+    QGraphicsRectItem *armorBar;
+
     BarraVida();
-    void setValores(int Max, int Vida);
+    void setValores(int Max, int Vida, int MaxA, int armor);
 
 };
 

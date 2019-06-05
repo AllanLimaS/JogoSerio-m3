@@ -65,13 +65,13 @@ void Boss::verificaDano(){
     for(int  i = 0, n = colliding_items.size(); i < n; i++){
 
         if(typeid(*(colliding_items[i]))== typeid (Tiro)){
-            setVidaBoss(getVidaBoss()-game->getDanoJogador());
+            setVidaBoss(getVidaBoss() - game->getDanoJogador());
             scene()->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
     }
 
-    if(getVidaBoss() == 0){
+    if(getVidaBoss() <= 0){
         scene()->removeItem(this);
         delete  (this);
         return;

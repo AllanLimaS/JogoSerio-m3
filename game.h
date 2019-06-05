@@ -16,6 +16,7 @@ class Game: public QGraphicsView{
 private:
     int TIRAO = 0;
     int DANO = 0;
+    int ARMAO = 0;
     int DanoJogador = 1;
 
 public:
@@ -36,6 +37,9 @@ public:
     void setDanoJogador(int value);
 
     void criaMapa();
+
+    int getARMAO() const;
+    void setARMAO(int value);
 
 public slots:
     void atualizaTela();
