@@ -12,14 +12,15 @@ class Jogador:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 private:
 
-    bool Up=0,Down=0,Right=0,Left=0,podeAtirar=0,
-         TiroUp=0,TiroDown=0,TiroRight=0,TiroLeft=0;
-
+    bool Up=0,Down=0,Right=0,Left=0,TiroUp=0,TiroDown=0,TiroRight=0,TiroLeft=0;
+    bool podeAtirar = 0, podeAtirar2=0, podeAtirar3=0;
     int velocidadeTiro,velocidadeMovimento;
     int pontosUpgrade = 0;
 
     int MaxVida = 12;
     int Vida = 12;
+    int MaxArmor = 100;
+    int Armor = 0;
     int DanoSofrido = 0;
     int Arma = 0; // 0 PISTOLA // 1 DOZE // 2 SNIPER
 
@@ -51,8 +52,16 @@ public:
     int getDanoSofrido() const;
     void setDanoSofrido(int value);
 
+    int getMaxArmor() const;
+    void setMaxArmor(int value);
+
+    int getArmor() const;
+    void setArmor(int value);
+
 public slots:
     void atirar();
+    void atirar2();
+    void atirar3();
     void verificaDano();
     void acao();                //funcao onde realiza o movimento SUAVEEEEEEEEEEEEEEE
 };

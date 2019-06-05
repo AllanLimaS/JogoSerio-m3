@@ -21,6 +21,7 @@ Inimigo::Inimigo(QGraphicsItem *parent): QObject(),QGraphicsPixmapItem(parent){
 void Inimigo::Normal(){
 
     game->setDANO(2); // DANO IGUAL A 2
+    game->setARMAO(10);
 
     setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_glock.png"));
     setPos(200+rand()%400,100+ rand()%350);
@@ -37,6 +38,7 @@ void Inimigo::Normal(){
 void Inimigo::Metralha(){
 
     game->setDANO(1); //INIMIGO DA 1 DE DANO PQ SE DER MAIS VAI DAR RUIM
+    game->setARMAO(20);
 
     setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_ump.png"));
     setPos(200+rand()%400,100+ rand()%350);
@@ -47,13 +49,14 @@ void Inimigo::Metralha(){
 
     QTimer * atira_timer = new QTimer(this);
     connect(atira_timer,SIGNAL(timeout()),this,SLOT(atiraMetralha()));
-    atira_timer->start(160);
+    atira_timer->start(300);
 }
 
 
 void Inimigo::Inimigo12(){
 
     game->setDANO(3); // INIMIGO DA 3 DANO PQ XM NÉ CARA MT BOA
+    game->setARMAO(30);
 
     setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_xm.png"));
     setPos(200+rand()%400,100+ rand()%350);
@@ -71,6 +74,7 @@ void Inimigo::Inimigo12(){
 void Inimigo::Sniper(){
 
     game->setDANO(5); // INIMIGO DA 5 DA DANO FAMOSA AWP VARADA
+    game->setARMAO(70);
 
     setPixmap(QPixmap(":/inimigo/imagens/inimigos/inimigo_awp.png"));
     setPos(200+rand()%400,100+ rand()%350);

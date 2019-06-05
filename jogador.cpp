@@ -13,7 +13,7 @@
 #include <QPixmap>
 #include <QGraphicsRectItem>
 #include <QList>
-#include <QtDebug>
+#include <QDebug>
 #include <qtimer.h>
 
 extern Game * game;
@@ -53,16 +53,47 @@ void Jogador::atirar(){
     podeAtirar = true;
 }
 
+void Jogador::atirar2()
+{
+    podeAtirar2 = true;
+}
+
+void Jogador::atirar3()
+{
+    podeAtirar3 = true;
+}
+
 void Jogador::verificaDano()
 {
     if(game->getTIRAO() == 1){
-        if(getVida() > game->getDANO()){
+        if(Armor >= game->getARMAO()){
+            setArmor(getArmor() - game->getARMAO());
+            if(game->getDANO() == 2){
+                setVida(getVida() - 1);
+            }
+            if(game->getDANO() == 3){
+                setVida(getVida() - 2);
+            }
+            if(game->getDANO() == 1){
+                setVida(getVida());
+            }
+            if(game->getDANO() == 5){
+                setVida(getVida() - 4);
+            }
+        }
+        else if(getArmor() > 0){
+            setArmor(0);
             setVida(getVida() - game->getDANO());
-            game->setTIRAO(0);
+        }
+        else if(getVida() > game->getDANO()){
+            setVida(getVida() - game->getDANO());
         } else {
             game->close(); // FIM TEMPORARIO
         }
+        game->setTIRAO(0);
+        qDebug()<<getArmor();
     }
+
 }
 
 void Jogador::acao(){
@@ -154,20 +185,6 @@ void Jogador::acao(){
         }
     }
 
-    // LOGICA CAGADA PRA O PLAYER ANDAR NA DIAGONAL UHSAUFHASUFHSA
-//    setRotation(0);
-//    if(this->Left==true and this->Up==true){
-//        setRotation(45);
-//    }
-//    if(this->Right==true and this->Up==true){
-//        setRotation(315);
-//    }
-//    if(this->Left==true and this->Down==true){
-//        setRotation(-45);
-//    }
-//    if(this->Right==true and this->Down==true){
-//        setRotation(-315);
-//    }
 
 //________________________________________TIRO________________________________________//
 
@@ -182,6 +199,8 @@ void Jogador::acao(){
                 podeAtirar=false;
                 QSound::play(":/audios/glock.wav");
             }
+         }
+        if(podeAtirar2 == true){
             if(Arma == 1){ // XM
                 Tiro * tiro =  new Tiro();
                 Tiro * tiro2 = new Tiro();
@@ -203,15 +222,18 @@ void Jogador::acao(){
                 scene()->addItem(tiro);
                 scene()->addItem(tiro2);
                 scene()->addItem(tiro3);
-                podeAtirar=false;
+                podeAtirar2=false;
                 QSound::play(":/audios/xm.wav");
             }
+        }
+        if(podeAtirar3 == true){
             if(Arma == 2){ // AWP
                 Tiro * tiro =  new Tiro();
                 tiro ->setPos(this->x()+10,this->y()+10);
-                tiro ->setRotation(260+rand()%20-rand()%20);
+                tiro ->setRotation(270);
                 tiro->setVelocidade(this->velocidadeTiro);
                 scene()->addItem(tiro);
+                podeAtirar3 = false;
                 QSound::play(":/audios/awp.wav");
             }
         }
@@ -227,6 +249,8 @@ void Jogador::acao(){
                 podeAtirar=false;
                 QSound::play(":/audios/glock.wav");
             }
+        }
+        if(podeAtirar2==true){
             if(Arma == 1){
                 if(Arma == 1){ // XM
                     Tiro * tiro =  new Tiro();
@@ -249,18 +273,21 @@ void Jogador::acao(){
                     scene()->addItem(tiro);
                     scene()->addItem(tiro2);
                     scene()->addItem(tiro3);
-                    podeAtirar=false;
+                    podeAtirar2=false;
                     QSound::play(":/audios/xm.wav");
                 }
             }
+        }
 
+        if(podeAtirar3==true){
             if(Arma == 2){ // AWP
                 Tiro * tiro =  new Tiro();
                 tiro ->setPos(this->x()+10,this->y()+10);
-                tiro ->setRotation(90+rand()%20-rand()%20);
+                tiro ->setRotation(90);
                 tiro->setVelocidade(this->velocidadeTiro);
                 scene()->addItem(tiro);
                 QSound::play(":/audios/awp.wav");
+                podeAtirar3=false;
             }
         }
     }
@@ -275,6 +302,8 @@ void Jogador::acao(){
                 podeAtirar=false;
                 QSound::play(":/audios/glock.wav");
             }
+        }
+        if(podeAtirar2==true){
             if(Arma == 1){ // XM
                 Tiro * tiro =  new Tiro();
                 Tiro * tiro2 = new Tiro();
@@ -296,16 +325,19 @@ void Jogador::acao(){
                 scene()->addItem(tiro);
                 scene()->addItem(tiro2);
                 scene()->addItem(tiro3);
-                podeAtirar=false;
+                podeAtirar2=false;
                 QSound::play(":/audios/xm.wav");
             }
+        }
+        if(podeAtirar3==true){
             if(Arma == 2){ // AWP
                 Tiro * tiro =  new Tiro();
                 tiro ->setPos(this->x()+10,this->y()+10);
-                tiro ->setRotation(0+rand()%20-rand()%20);
+                tiro ->setRotation(0);
                 tiro->setVelocidade(this->velocidadeTiro);
                 scene()->addItem(tiro);
                 QSound::play(":/audios/awp.wav");
+                podeAtirar3=false;
             }
         }
     }
@@ -320,6 +352,8 @@ void Jogador::acao(){
                 podeAtirar=false;
                 QSound::play(":/audios/glock.wav");
             }
+        }
+        if(podeAtirar2==true){
             if(Arma == 1){ // XM
                 Tiro * tiro =  new Tiro();
                 Tiro * tiro2 = new Tiro();
@@ -340,16 +374,19 @@ void Jogador::acao(){
                 scene()->addItem(tiro);
                 scene()->addItem(tiro2);
                 scene()->addItem(tiro3);
-                podeAtirar=false;
+                podeAtirar2=false;
                 QSound::play(":/audios/xm.wav");
             }
+        }
+        if(podeAtirar3==true){
             if(Arma == 2){ // AWP
                 Tiro * tiro =  new Tiro();
                 tiro ->setPos(this->x()+10,this->y()+10);
-                tiro ->setRotation(180+rand()%20-rand()%20);
+                tiro ->setRotation(180);
                 tiro->setVelocidade(this->velocidadeTiro);
                 scene()->addItem(tiro);
                 QSound::play(":/audios/awp.wav");
+                podeAtirar3=false;
             }
         }
     }
@@ -507,15 +544,46 @@ void Jogador::setDanoSofrido(int value)
     DanoSofrido = value;
 }
 
+int Jogador::getMaxArmor() const
+{
+    return MaxArmor;
+}
+
+void Jogador::setMaxArmor(int value)
+{
+    MaxArmor = value;
+}
+
+int Jogador::getArmor() const
+{
+    return Armor;
+}
+
+void Jogador::setArmor(int value)
+{
+    Armor = value;
+}
+
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
+    this->setZValue(3);
+
     setPixmap(QPixmap(":/player/imagens/player/player_usp_left.png"));
     this->setVelocidadeTiro(15);
     this->setVelocidadeMovimento(2);
 
+
     QTimer * atirar_timer = new QTimer(this);
     connect(atirar_timer,SIGNAL(timeout()),this,SLOT(atirar()));
-    atirar_timer->start(250);
+    atirar_timer->start(350);
+
+    QTimer * atirar_timer2 = new QTimer(this);
+    connect(atirar_timer2,SIGNAL(timeout()),this,SLOT(atirar2()));
+    atirar_timer2->start(750);
+
+    QTimer * atirar_timer3 = new QTimer(this);
+    connect(atirar_timer3,SIGNAL(timeout()),this,SLOT(atirar3()));
+    atirar_timer3->start(1700);
 
     QTimer * acao_timer = new QTimer(this);
     connect(acao_timer,SIGNAL(timeout()),this,SLOT(acao()));
@@ -585,19 +653,13 @@ void Jogador::keyPressEvent(QKeyEvent *event){
                 }
             }
             if (event->key() == Qt::Key_2){
-                if(getPontosUpgrade() > 0){
-                    setVelocidadeMovimento(getVelocidadeMovimento()+1); //ANDA MAIS RAPIDO
-                    setPontosUpgrade(getPontosUpgrade() - 1);           //tem que ajeitar isso pq quebra dps de um certo ponto
-                }
-
-            }
-            if (event->key() == Qt::Key_3){
-                if(getPontosUpgrade() > 0){
-                    // UPA ALGO
-                    setPontosUpgrade(getPontosUpgrade() - 1);
+                if(getPontosUpgrade() >= 5){
+                    if(getArmor() < 1){                              // RECUPERA VIDA
+                        setArmor(getMaxArmor());
+                        setPontosUpgrade(getPontosUpgrade() - 5);
+                    }
                 }
             }
-
             if(event->key() == Qt::Key_F1){
                 if(Arma != 0){
                     if(getPontosUpgrade() > 3){                     // COMPRA PISTOLA CASO NESTEJA COM ELA

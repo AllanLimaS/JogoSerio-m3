@@ -63,6 +63,7 @@ void Tiro::move(){
             return;
 
         }
+
         if(typeid(*(colliding_items[i]))== typeid (Inimigo)){
             scene()->removeItem(colliding_items[i]);
             delete (colliding_items[i]);    //mata inimigo

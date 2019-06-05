@@ -44,17 +44,18 @@ void Game::setDanoJogador(int value)
 
 void Game::criaMapa(){
 
-    QList<QGraphicsItem *> colliding_items = scene->items();
-    for(int  i = 0, n = colliding_items.size(); i < n; i++){
-        if(typeid(*(colliding_items[i]))== typeid (Parede)){    //exclui as paredes do mapa
-            scene->removeItem(colliding_items[i]);
-            delete (colliding_items[i]);
-        }
-        if(typeid(*(colliding_items[i]))== typeid (Chao)){      //exclui os chaos
-            scene->removeItem(colliding_items[i]);
-            delete (colliding_items[i]);
-        }
-    }
+//    QList<QGraphicsItem *> colliding_items = scene->items();
+//    for(int  i = 0, n = colliding_items.size(); i < n; i++){
+//        if(typeid(*(colliding_items[i]))== typeid (Parede)){    BAGULHO QUEBRADO TALVEZ TENTAR ARRUMAR
+//            scene->removeItem(colliding_items[i]);
+//            delete (colliding_items[i]);
+
+//        }
+//        if(typeid(*(colliding_items[i]))== typeid (Chao)){
+//            scene->removeItem(colliding_items[i]);
+//            delete (colliding_items[i]);
+//        }
+//    }
 
     switch(rand()%2){
 
@@ -91,6 +92,16 @@ void Game::criaMapa(){
     }
 }
 
+int Game::getARMAO() const
+{
+    return ARMAO;
+}
+
+void Game::setARMAO(int value)
+{
+    ARMAO = value;
+}
+
 Game::Game():QGraphicsView(){
 
     scene = new QGraphicsScene(this);
@@ -105,6 +116,8 @@ Game::Game():QGraphicsView(){
     barraVida = new BarraVida();
     scene->addItem(barraVida->maxLifeBar);
     scene->addItem(barraVida->lifeBar);
+    scene->addItem(barraVida->maxArmorBar);
+    scene->addItem(barraVida->armorBar);
 
     jogador = new Jogador();
     scene->addItem(jogador);
@@ -118,23 +131,16 @@ Game::Game():QGraphicsView(){
 
     Escada * escada = new Escada();
     scene->addItem(escada);
+    escada->setZValue(2);       //seta prioridade do print
 
     QTimer * atualiza_timer = new QTimer(this);
     connect(atualiza_timer,SIGNAL(timeout()),this,SLOT(atualizaTela()));    //timer pra realizar cada movimento
     atualiza_timer->start(50);
-
-    //Inimigo * inimigo = new Inimigo();
-    //inimigo->Normal();
-    //scene->addItem(inimigo);
-
-    // ISSO QUEBRA DANO COMO EU FALEI PQ ACHO Q ELE CRIA
-    // O INIMIGO E N TEM ONDE ELE ALOCAR O DANO DELE ASSIM ELE QUEBRA
 }
 
 void Game::atualizaTela(){
-
     telaPiso->setValores(jogador->getPisoAtual(),jogador->getPontosUpgrade());
-    barraVida->setValores(jogador->getMaxVida(), jogador->getVida());
+    barraVida->setValores(jogador->getMaxVida(), jogador->getVida(), jogador->getMaxArmor(), jogador->getArmor());
 
 }
 
