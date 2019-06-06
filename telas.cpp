@@ -35,9 +35,12 @@ void Telas::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void Telas::TelaInstrucoes()
-{
+void Telas::TelaInstrucoes(){
     scene->setBackgroundBrush(QPixmap(":/imagens/imagens/instrucoes.png"));
     this->tipoTela=1;
+}
 
+void Telas::TelaMorte(){
+    scene->setBackgroundBrush(QPixmap(":/imagens/imagens/morte.png"));
+    this->tipoTela=1;
 }

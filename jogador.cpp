@@ -7,6 +7,7 @@
 #include "upgrades.h"
 #include "menu.h"
 #include "boss.h"
+#include "telas.h"
 
 #include <QSound>
 #include <QKeyEvent>
@@ -88,7 +89,11 @@ void Jogador::verificaDano()
         else if(getVida() > game->getDANO()){
             setVida(getVida() - game->getDANO());
         } else {
-            game->close(); // FIM TEMPORARIO
+            Telas * morte = new Telas();
+            morte->TelaMorte();
+            morte->show();
+            game->close();   // FIM TEMPORARIO
+            delete (this);
         }
         game->setTIRAO(0);
         qDebug()<<getArmor();
