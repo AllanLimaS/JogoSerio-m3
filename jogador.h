@@ -14,6 +14,7 @@ private:
 
     bool Up=0,Down=0,Right=0,Left=0,TiroUp=0,TiroDown=0,TiroRight=0,TiroLeft=0;
     bool podeAtirar = 0, podeAtirar2=0, podeAtirar3=0;
+    bool possuiXm = 0, possuiAwp = 0;
     int velocidadeTiro,velocidadeMovimento;
     int pontosUpgrade = 0;
 
@@ -57,6 +58,12 @@ public:
 
     int getArmor() const;
     void setArmor(int value);
+
+    bool getPossuiXm() const;
+    void setPossuiXm(bool value);
+
+    bool getPossuiAwp() const;
+    void setPossuiAwp(bool value);
 
 public slots:
     void atirar();
