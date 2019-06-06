@@ -14,6 +14,7 @@
         <file>imagens/placa.png</file>
         <file>imagens/instrucoes.png</file>
         <file>imagens/menu.png</file>
+        <file>imagens/morte.png</file>
     </qresource>
     <qresource prefix="/">
         <file>audios/awp.wav</file>

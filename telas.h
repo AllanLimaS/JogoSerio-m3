@@ -15,6 +15,7 @@ public:
     QGraphicsScene * scene;
     void keyPressEvent(QKeyEvent * event);
     void TelaInstrucoes();
+    void TelaMorte();
 };
 
 #endif // TELAS_H

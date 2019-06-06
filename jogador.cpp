@@ -7,6 +7,7 @@
 #include "upgrades.h"
 #include "menu.h"
 #include "boss.h"
+#include "telas.h"
 
 #include <QSound>
 #include <QKeyEvent>
@@ -88,7 +89,11 @@ void Jogador::verificaDano()
         else if(getVida() > game->getDANO()){
             setVida(getVida() - game->getDANO());
         } else {
-            game->close(); // FIM TEMPORARIO
+            Telas * morte = new Telas();
+            morte->TelaMorte();
+            morte->show();
+            game->close();   // FIM TEMPORARIO
+            delete (this);
         }
         game->setTIRAO(0);
         qDebug()<<getArmor();
@@ -564,6 +569,26 @@ void Jogador::setArmor(int value)
     Armor = value;
 }
 
+bool Jogador::getPossuiXm() const
+{
+    return possuiXm;
+}
+
+void Jogador::setPossuiXm(bool value)
+{
+    possuiXm = value;
+}
+
+bool Jogador::getPossuiAwp() const
+{
+    return possuiAwp;
+}
+
+void Jogador::setPossuiAwp(bool value)
+{
+    possuiAwp = value;
+}
+
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
     this->setZValue(3);
@@ -620,7 +645,7 @@ void Jogador::keyPressEvent(QKeyEvent *event){
 
     if (event->key() == Qt::Key_Escape){    //quita do game quando o jogador está focado
         game->close();
-
+            // bota pra matar o jogador aqui
         // OBS: O JOGO NAO MORRE AQUI , ELE SIMPLESMENTE "MINIMIZA"
 
         Menu * menu = new Menu();
@@ -660,35 +685,49 @@ void Jogador::keyPressEvent(QKeyEvent *event){
                     }
                 }
             }
-            if(event->key() == Qt::Key_F1){
-                if(Arma != 0){
-                    if(getPontosUpgrade() > 3){                     // COMPRA PISTOLA CASO NESTEJA COM ELA
-                        Arma = 0;
-                        setPontosUpgrade(getPontosUpgrade() - 3);
-                        game->setDanoJogador(1);
-                    }
-                }
-            }
 
-            if(event->key()== Qt::Key_F2){
-                if(Arma != 1){
+            if(event->key()== Qt::Key_3){
+                if(getPossuiXm() == false){
                     if(getPontosUpgrade() > 7){                    // COMPRA XM CASO N ESTEJA COM ELA
                         Arma = 1;
                         setPontosUpgrade(getPontosUpgrade() - 7);
                         game->setDanoJogador(2);
+                        setPossuiXm(true);
                     }
                 }
             }
 
-            if(event->key()== Qt::Key_F3){
-                if(Arma != 2){
+            if(event->key()== Qt::Key_4){
+                if(getPossuiAwp() == false){
                     if(getPontosUpgrade() > 9){                    // COMPRA SNIPER CASO N ESTEJA COM ELA
                         Arma = 2;
                         setPontosUpgrade(getPontosUpgrade() - 10);
                         game->setDanoJogador(4);
+                        setPossuiAwp(true);
                     }
                 }
             }
+        }
+    }
+    if (event->key() == Qt::Key_Q){
+        if(Arma==0){
+            if(getPossuiXm()==true){
+                Arma=1;
+                game->setDanoJogador(2);
+            }else if(getPossuiAwp()==true){
+                Arma=2;
+                game->setDanoJogador(4);
+            }
+        }else if (Arma==1){
+            if(getPossuiAwp()==true){
+                Arma=2;
+                game->setDanoJogador(4);
+            }else{
+                Arma=0;
+                game->setDanoJogador(1);
+            }
+        }else if (Arma==2){
+            Arma=0;
         }
     }
 }
