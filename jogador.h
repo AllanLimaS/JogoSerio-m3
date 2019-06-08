@@ -65,6 +65,8 @@ public:
     bool getPossuiAwp() const;
     void setPossuiAwp(bool value);
 
+    int getTemInimigo() const;
+
 public slots:
     void atirar();
     void atirar2();

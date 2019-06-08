@@ -6,6 +6,8 @@
 #include "telapiso.h"
 #include "barravida.h"
 #include "tiroinimigo.h"
+#include "escada.h"
+
 #include <QGraphicsView>
 #include <QMouseEvent>
 #include <QObject>
@@ -26,6 +28,7 @@ public:
     QGraphicsScene * scene;
     TelaPiso * telaPiso;
     BarraVida * barraVida;
+    Escada * escada;
 
     int getTIRAO() const;
     void setTIRAO(int value);
