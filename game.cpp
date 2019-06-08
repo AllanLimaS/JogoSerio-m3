@@ -57,7 +57,7 @@ void Game::criaMapa(){
 //        }
 //    }
 
-    switch(rand()%2){
+    switch(rand()%3){
 
     case 0:     // mapa original
         for(int i = 0; i<13; i++){
@@ -87,8 +87,25 @@ void Game::criaMapa(){
 
             }
         }
-        scene->setBackgroundBrush(QPixmap(":/tiles/imagens/mapas/dust_parede2.bmp"));
+        scene->setBackgroundBrush(QPixmap(":/tiles/imagens/mapas/dust_back.png"));
         break;
+
+    case 2:     //aztec
+        for(int i = 0; i<13; i++){
+            for(int j = 0; j<13; j++){
+                if(i==0||j==0||i==12||j==12){
+                    Parede * parede = new Parede(i, j,2);
+                    scene -> addItem(parede);
+                } else {
+                    Chao * chao = new Chao(i,j,2);
+                    scene->addItem(chao);
+                }
+
+            }
+        }
+        scene->setBackgroundBrush(QPixmap(":/tiles/imagens/mapas/aztec_back.png"));
+        break;
+
     }
 }
 
@@ -129,7 +146,7 @@ Game::Game():QGraphicsView(){
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    Escada * escada = new Escada();
+    escada = new Escada();
     scene->addItem(escada);
     escada->setZValue(2);       //seta prioridade do print
 
@@ -142,5 +159,13 @@ void Game::atualizaTela(){
     telaPiso->setValores(jogador->getPisoAtual(),jogador->getPontosUpgrade());
     barraVida->setValores(jogador->getMaxVida(), jogador->getVida(), jogador->getMaxArmor(), jogador->getArmor());
 
+    escada->setPen(QPen(Qt::green));
+
+    QList<QGraphicsItem *> colliding_items = scene->items();
+    for(int i = 0, n = colliding_items.size(); i < n; i++){
+        if(typeid(*(colliding_items[i]))== typeid (Inimigo)){ // sempre procura uma placa para deletar
+            escada->setPen(QPen(Qt::red));
+        }
+    }
 }
 

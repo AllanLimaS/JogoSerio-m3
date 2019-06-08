@@ -30,6 +30,14 @@
         <file>imagens/mapas/dust_parede1.bmp</file>
         <file>imagens/mapas/dust_parede2.bmp</file>
         <file>imagens/mapas/dust_parede3.bmp</file>
+        <file>imagens/mapas/dust_back.png</file>
+        <file>imagens/mapas/aztec_back.png</file>
+        <file>imagens/mapas/aztec_chao1.bmp</file>
+        <file>imagens/mapas/aztec_chao2.bmp</file>
+        <file>imagens/mapas/aztec_chao3.bmp</file>
+        <file>imagens/mapas/aztec_chao4.bmp</file>
+        <file>imagens/mapas/aztec_parede1.bmp</file>
+        <file>imagens/mapas/aztec_parede2.bmp</file>
     </qresource>
     <qresource prefix="/player">
         <file>imagens/player/player_usp_down.png</file>

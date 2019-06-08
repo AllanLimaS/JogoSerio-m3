@@ -589,6 +589,11 @@ void Jogador::setPossuiAwp(bool value)
     possuiAwp = value;
 }
 
+int Jogador::getTemInimigo() const
+{
+    return TemInimigo;
+}
+
 Jogador::Jogador(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem(parent)
 {
     this->setZValue(3);
